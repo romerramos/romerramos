@@ -14,11 +14,6 @@ I'm not an evangelist for any particular tech, I'll always pick what fits the jo
 * Working on **MyPotential** an AI platform helping high school students in Spain figure out their career paths using psychology assessments and a RAG pipeline over curated educational data.
 * Maintaining **MakerTracker** a custom project management tool born when Pivotal Tracker shut down. Built with Rails, Hotwire/Turbo/Stimulus, SQLite, and Kamal. Currently running in production for managing projects at: Lowfoot and in my side projects (MyPotential and even MakerTracker itself).
 
-### What You'll Find Here
-* 🔍 **[elementary-watson](https://github.com/romerramos/elementary-watson) / [nelementary-watson](https://github.com/romerramos/nelementary-watson)** — VS Code/Nvim extension for project.inlang in SvelteKit apps.
-* 🐳 **[dwui](https://github.com/romerramos/dwui)** — A really simple Docker web UI, written in Go.
-
-
 ### 💻 Tech Stack
 | Focus | Technologies |
 | :--- | :--- |
@@ -29,5 +24,11 @@ I'm not an evangelist for any particular tech, I'll always pick what fits the jo
 | **Auth** | Keycloack, OpenFGA, Auth.js, BetterAuth |
 | **Infra** | CI/CD, Docker, Kamal, Kubernetes, HELM, ArgoCD |
 
+### When I'm Not Coding
+- Hunting down good specialty coffee.
+- Taking photos of anything and everything.
+- Learning how to draw.
+- Collecting consoles and video games (mostly because I fall asleep when I actually try to play them 😭).
+
 ---
-*I ship end-to-end. I thrive in small, async teams where people own their work from idea to production.* 😄
+*I ship end-to-end. I thrive in small, async teams where people own their work from idea to production.*
