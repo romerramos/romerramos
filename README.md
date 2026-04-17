@@ -3,18 +3,18 @@
 
 15 years of building web products and still enjoying it. I like designing clean architectures, building features end-to-end, and setting up infrastructure that makes deploying boring (in a good way). 
 
-### 🛠️ How I Build
+### How I Build
 I'm not an evangelist for any particular tech, I'll always pick what fits the job. I care deeply about developer ergonomics: if the setup slows people down, something's wrong.
 
 * **My Go-To for Speed:** Rails + SQLite + Kamal. Simple to deploy, easy to reason about, and gets a real product in front of users fast.
 * **The Right Tool for the Job:** I reach for SvelteKit for heavy frontends, Go for fast/small services, Python for data work, and Kubernetes when it's time to scale. 
 
-### 🚀 Currently
+### Currently
 * Building core services deployed in AWS and shipping visualization and data products at **Lowfoot**.
 * Working on **MyPotential** an AI platform helping high school students in Spain figure out their career paths using psychology assessments and a RAG pipeline over curated educational data.
 * Maintaining **MakerTracker** a custom project management tool born when Pivotal Tracker shut down. Built with Rails, Hotwire/Turbo/Stimulus, SQLite, and Kamal. Currently running in production for managing projects at: Lowfoot and in my side projects (MyPotential and even MakerTracker itself).
 
-### 📂 What You'll Find Here
+### What You'll Find Here
 * 🔍 **[elementary-watson](https://github.com/romerramos/elementary-watson) / [nelementary-watson](https://github.com/romerramos/nelementary-watson)** — VS Code/Nvim extension for project.inlang in SvelteKit apps.
 * 🐳 **[dwui](https://github.com/romerramos/dwui)** — A really simple Docker web UI, written in Go.
 
