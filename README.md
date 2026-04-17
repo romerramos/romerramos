@@ -12,7 +12,7 @@ I'm not an evangelist for any particular tech, I'll always pick what fits the jo
 ### 🚀 Currently
 * Building core services deployed in AWS and shipping visualization and data products at **Lowfoot**.
 * Working on **MyPotential** an AI platform helping high school students in Spain figure out their career paths using psychology assessments and a RAG pipeline over curated educational data.
-* Maintaining **MakerTracker** a custom project management tool born when Pivotal Tracker shut down. Built with Rails, Hotwire/Turbo/Stimulus, SQLite, and Kamal. Currently running in production for managing projects at: Lowfoot and any of my side projects (MyPotential and even MakerTracker itself).
+* Maintaining **MakerTracker** a custom project management tool born when Pivotal Tracker shut down. Built with Rails, Hotwire/Turbo/Stimulus, SQLite, and Kamal. Currently running in production for managing projects at: Lowfoot and in my side projects (MyPotential and even MakerTracker itself).
 
 ### 📂 What You'll Find Here
 * 🔍 **[elementary-watson](https://github.com/romerramos/elementary-watson) / [nelementary-watson](https://github.com/romerramos/nelementary-watson)** — VS Code/Nvim extension for project.inlang in SvelteKit apps.
