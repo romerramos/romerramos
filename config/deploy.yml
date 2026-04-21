@@ -20,9 +20,9 @@ servers:
   #
   # Don't use this when deploying to multiple web servers (then you have to terminate SSL at your load balancer).
   #
-  proxy:
-    ssl: true
-    host: romerramos.me
+proxy:
+  ssl: true
+  host: romerramos.me
   # Where you keep your container images.
 registry:
   # Needed for authenticated registries.
