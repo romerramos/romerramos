@@ -1,0 +1,6 @@
+@import "tailwindcss";
+
+@theme {
+  --font-dm-sans: "DM Sans", sans-serif; 
+  --font-jetbrains-mono: "JetBrains Mono", monospace; 
+}
