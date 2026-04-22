@@ -1,7 +1,7 @@
 <!DOCTYPE html>
-<html>
+<html lang="<%= I18n.locale %>">
   <head>
-    <title><%= content_for(:title) || "Romer Ramos" %></title>
+    <title><%= content_for(:title) || t("layouts.application.title") %></title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="application-name" content="romerramos">
@@ -40,7 +40,7 @@
     >
   </head>
 
-  <body class="bg-[#282E5A]">
+  <body class="bg-navy">
     <main class="h-svh text-white font-dm-sans flex flex-col justify-between">
       <%= render "layouts/header" %>
       <%= yield %>

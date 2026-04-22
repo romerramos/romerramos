@@ -2,7 +2,7 @@
   <div class="w-full md:w-3xl">
     <div
       class="
-        h-14 w-14 md:h-20 md:w-20 rounded-full border-[3px] border-[#FF7300]
+        h-14 w-14 md:h-20 md:w-20 rounded-full border-[3px] border-brand
         overflow-hidden
       "
     >
@@ -10,51 +10,44 @@
     </div>
 
     <h1 class="my-4 text-4xl md:text-7xl font-bold ">
-      Hello, I’m
-      <span class="text-[#FF7300]">Romer</span>!
+      <%= t("home.hello") %>
+      <span class="text-brand"><%= t("home.name") %></span>!
     </h1>
     <p class="text-2xl md:text-3xl leading-snug md:leading-normal font-extralight">
-      A full stack
-      <span class="text-[#FF7300] font-light">developer</span>
-      based in Madrid who builds web products and loves
-      <span class="text-[#FF7300] font-light">coffee</span>. I also take
-      <span class="text-[#FF7300] font-light">photos</span>
-      of anything and everything, I own more
-      <span class="text-[#FF7300] font-light">video games</span>
-      than I can stay awake to use.
+      <%= t("home.bio_html") %>
     </p>
     <ul class="font-extralight md:text-lg flex gap-2 my-6">
       <li>
         <a
-          class="flex gap-1 items-center hover:text-[#FF7300]"
+          class="flex gap-1 items-center hover:text-brand"
           href="https://github.com/romerramos"
           target="_blank"
           rel="noopener noreferrer"
         >
-          <i class="fa-brands fa-github text-base"></i>Github
+          <i class="fa-brands fa-github text-base"></i><%= t("home.github") %>
         </a>
       </li>
       <li>
         <a
-          class="flex gap-1 items-center hover:text-[#FF7300]"
+          class="flex gap-1 items-center hover:text-brand"
           href="https://linkedin.com/in/romerramos"
           target="_blank"
           rel="noopener noreferrer"
         >
-          <i class="fa-brands fa-linkedin text-base"></i>LinkedIn
+          <i class="fa-brands fa-linkedin text-base"></i><%= t("home.linkedin") %>
         </a>
       </li>
       <li>
         <a
-          class="flex gap-1 items-center hover:text-[#FF7300]"
+          class="flex gap-1 items-center hover:text-brand"
           href="mailto:romerramos@gmail.com"
         >
-          <i class="fa-solid fa-at text-base"></i>Email
+          <i class="fa-solid fa-at text-base"></i><%= t("home.email") %>
         </a>
       </li>
       <li>
-        <a class="flex gap-1 items-center hover:text-[#FF7300]" href="tel:+34722781489">
-          <i class="fa-solid fa-phone text-base"></i>Phone
+        <a class="flex gap-1 items-center hover:text-brand" href="tel:+34722781489">
+          <i class="fa-solid fa-phone text-base"></i><%= t("home.phone") %>
         </a>
       </li>
     </ul>
