@@ -3,7 +3,7 @@ class SessionsController < ApplicationController
   allow_unauthenticated_access only: %i[ new create ]
 
   def after_authentication_url
-    admin_jot_spot_path
+    admin_posts_path
   end
 
   rate_limit to: 10, within: 3.minutes, only: :create, with: -> { redirect_to new_session_path, alert: "Try again later." }

@@ -17,8 +17,8 @@ Rails.application.routes.draw do
   get "service-worker" => "rails/pwa#service_worker", as: :pwa_service_worker
 
   namespace :admin do
-    get "/", to: redirect("/admin/jot-spot")
-    get "jot-spot", to: "jot_spot#index"
+    get "/", to: redirect("/admin/posts")
+    resources :posts
   end
 
   scope "/:locale", locale: /en|es/ do

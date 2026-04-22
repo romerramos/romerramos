@@ -9,6 +9,7 @@
     <%= yield :head %>
 
     <%= stylesheet_link_tag :app, "data-turbo-track": "reload" %>
+    <%= stylesheet_link_tag "marksmith" %>
     <%= javascript_importmap_tags %>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -25,9 +26,14 @@
         border-white/10
       "
     >
-      <%= link_to root_path, class: "font-jetbrains-mono font-extrabold text-lg md:text-xl" do %>
+      <div class="flex items-center gap-6">
+      <%= link_to root_path(locale: I18n.locale), class: "font-jetbrains-mono font-extrabold text-lg md:text-xl" do %>
         <%= image_tag "logo.svg", class: "h-3 md:h-4" %>
       <% end %>
+        <% if authenticated? %>
+          <%= link_to "Jot Spot", admin_posts_path, class: "text-sm font-medium text-white/70 hover:text-brand transition-colors" %>
+        <% end %>
+      </div>
       <% if authenticated? %>
         <div class="flex items-center gap-4">
           <span class="text-sm text-white/60"><%= Current.session.user.email_address %></span>
