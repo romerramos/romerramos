@@ -24,27 +24,28 @@ es:
   about:
     heading: "Desarrollo cosas en internet."
     full_name: "Romer Ramos"
-    subtitle_html: '<span class="text-brand">Desarrollo</span> cosas en internet.'
+    subtitle_html: 'I <span class="text-brand font-medium">build</span> things on
+      the internet.'
     intro_html: |
-      Empecé en Venezuela con trabajos iniciales que forjan carácter. Software embebido, Windows CE, fusiones bancarias, apps para Blackberry. Si nunca has depurado Java en una Blackberry, felicidades, viviste una vida mejor que la mía.
+      Empecé en Venezuela «fogueándome» con esos trabajos en los que te toca hacer de todo. Sistemas embebidos, Windows CE, fusiones bancarias, apps para Blackberry. Si nunca has depurado Java en una Blackberry, felicidades, has tenido una vida mejor que la mía.
     geeks_html: |
-      Pasé a <span class="text-brand">4Geeks</span>, donde básicamente dirigía equipos de ingeniería en tres ciudades e intentaba que todos dejaran de reinventar la rueda en cada sprint.
+      Pasé por <span class="text-brand font-medium">4Geeks</span>, donde básicamente dirigía equipos de ingeniería en tres ciudades e intentaba que todos dejaran de reinventar la rueda en cada sprint.
     academia_html: |
-      Eso me llevó a fundar <span class="text-brand">Academia Hack</span>, un bootcamp de programación donde enseñé a cientos de personas a codear. Más del 60% consiguió trabajo en tecnología, y aprendí que dirigir una escuela es ser terapeuta, project manager y animador al mismo tiempo.
+      Eso me llevó a fundar <span class="text-brand font-medium">Academia Hack</span>, un bootcamp de programación donde enseñé a cientos de personas a programar. Más del 60% consiguió trabajo en tecnología, y aprendí que dirigir una escuela es ser terapeuta, project manager y motivador al mismo tiempo.
     spain_html: |
-      Tras el capítulo del bootcamp, hice las maletas y me <span class="text-brand">mudé a España</span> — y en algún punto entre adaptarme a un país nuevo y una vida nueva, cogí una cámara y <span class="text-brand">me enamoré de la fotografía</span>. Resulta que pasar todo el día mirando luz y composición reconfigura cómo piensas sobre diseño. Quién lo diría.
+      Tras el capítulo del bootcamp, hice las maletas y me mudé a España, y en algún punto entre adaptarme a un país nuevo y a una vida nueva, me compré una cámara y me enamoré de la fotografía. Resulta que pasar todo el día observando la luz y la composición te cambia por completo la forma de entender el diseño. Quién lo diría.
     aurora_html: |
-      Luego <span class="text-brand">construí aurorajobs</span>, una plataforma de reclutamiento para estudiantes universitarios — de cero a más de 20K usuarios, equipo de cuatro personas, cinco años de trabajo sin parar.
+      Luego monté <span class="text-brand font-medium">aurorajobs</span>, una plataforma de reclutamiento para estudiantes universitarios: pasamos de cero a más de 20K usuarios, con un equipo de cuatro personas y cinco años de trabajo sin parar.
     drawing_html: |
-      En algún momento de esos años también empecé a hacer <span class="text-brand">drawing weekly</span>, y no he parado en casi tres años. Es mi forma de desconectar en un mundo donde todo compila o se despliega.
+      En algún momento de esos años también empecé a <span class="text-brand font-medium">dibujar semanalmente</span>, y no he parado en casi tres años. Es mi forma de desconectar en un mundo donde todo compila o se despliega.
     lowfoot_html: |
-      Hoy soy <span class="text-brand">Technical Lead en Lowfoot</span>, una plataforma de análisis energético donde dirijo APIs principales, infraestructura y lidero el equipo web en tres continentes. Mucho SvelteKit, mucho Kubernetes.
+      Hoy soy <span class="text-brand font-medium">Technical Lead en Lowfoot</span>, una plataforma de análisis energético donde me encargo de las APIs principales, la infraestructura y lidero al equipo web en tres continentes. Mucho SvelteKit, mucho Kubernetes.
     mypotential_html: |
-      Como proyecto paralelo <span class="text-brand">estoy construyendo MyPotential</span> — una plataforma de IA que ayuda a estudiantes de bachillerato españoles a descubrir qué hacer con sus vidas. Ya lo estoy probando en aulas de Madrid, que es aterrador y genial a la vez.
+      En paralelo, estoy desarrollando <span class="text-brand font-medium">MyPotential</span>, una plataforma de IA que ayuda a estudiantes de bachillerato españoles a descubrir qué hacer con sus vidas. Ya la estoy probando en aulas de Madrid.
     outro_html: |
-      Vivo en Madrid. Me gustan los equipos pequeños, entregar rápido y construir cosas que resuelvan problemas reales, y cuando no estoy haciendo eso, probablemente esté dibujando o persiguiendo buena luz con una cámara.
+      Vivo en Madrid. Me gustan los equipos pequeños, salir a producción rápido y crear cosas que resuelvan problemas reales. Cuando no estoy haciendo eso, probablemente esté dibujando o buscando buena luz con una cámara.
     coffee_html: |
-      Si has llegado hasta aquí vamos a tomar un <span class="text-brand">specialty coffee</span>, ¡invito yo! (Puede que conozca uno o 10 sitios increíbles)
+      Si has llegado hasta aquí, vamos a tomarnos un <span class="text-brand font-medium">café</span>, ¡invito yo! (Puede que conozca una... o 10 cafeterías buenas).
 
   layouts:
     application:

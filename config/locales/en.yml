@@ -24,27 +24,28 @@ en:
   about:
     heading: "I build things on the internet."
     full_name: "Romer Ramos"
-    subtitle_html: 'I <span class="text-brand">build</span> things on the internet.'
+    subtitle_html: 'I <span class="text-brand font-medium">build</span> things on
+      the internet.'
     intro_html: |
       It started in Venezuela with some character-building first jobs. Embedded software, Windows CE, banking mergers, Blackberry apps. If you've never debugged Java on a Blackberry, congratulations, you lived a better life than me.
     geeks_html: |
-      I moved on to <span class="text-brand">4Geeks</span>, where I basically herded engineering teams across three cities and tried to get everyone to stop reinventing the wheel every sprint.
+      I moved on to <span class="text-brand font-medium">4Geeks</span>, where I basically herded engineering teams across three cities and tried to get everyone to stop reinventing the wheel every sprint.
     academia_html: |
-      That led me to start <span class="text-brand">Academia Hack</span> a coding bootcamp where I taught hundreds of people to code. Over 60% got hired in tech, and I learned that running a school is just being a therapist, project manager, and cheerleader at the same time.
+      That led me to start <span class="text-brand font-medium">Academia Hack</span> a coding bootcamp where I taught hundreds of people to code. Over 60% got hired in tech, and I learned that running a school is just being a therapist, project manager, and cheerleader at the same time.
     spain_html: |
-      After the bootcamp chapter I packed up and <span class="text-brand">moved to Spain</span> — and somewhere between figuring out a new country and a new life, I picked up a camera and <span class="text-brand">fell hard for photography</span>. Turns out staring at light and composition all day rewires how you think about design. Who knew.
+      After the bootcamp chapter I packed up and <span class="text-brand font-medium">moved to Spain</span> — and somewhere between figuring out a new country and a new life, I picked up a camera and <span class="text-brand font-medium">fell hard for photography</span>. Turns out staring at light and composition all day rewires how you think about design. Who knew.
     aurora_html: |
-      Then I <span class="text-brand">built aurorajobs</span>, a recruitment platform for university students — from zero to 20K+ users, four-person team, five years of nonstop shipping.
+      Then I <span class="text-brand font-medium">built aurorajobs</span>, a recruitment platform for university students — from zero to 20K+ users, four-person team, five years of nonstop shipping.
     drawing_html: |
-      Somewhere in the later years I also started <span class="text-brand">drawing weekly</span>, and I haven't stopped in almost three years. It's my way of unplugging in a world where everything compiles or deploys.
+      Somewhere in the later years I also started <span class="text-brand font-medium">drawing weekly</span>, and I haven't stopped in almost three years. It's my way of unplugging in a world where everything compiles or deploys.
     lowfoot_html: |
-      These days I'm a <span class="text-brand">Technical Lead at Lowfoot</span>, an energy analytics platform where I run core APIs, infrastructure, and lead the web team across three continents. Lots of SvelteKit, lots of Kubernetes.
+      These days I'm a <span class="text-brand font-medium">Technical Lead at Lowfoot</span>, an energy analytics platform where I run core APIs, infrastructure, and lead the web team across three continents. Lots of SvelteKit, lots of Kubernetes.
     mypotential_html: |
-      On the side <span class="text-brand">I'm building MyPotential</span> — an AI platform that helps Spanish high school students figure out what to do with their lives. Already demoing it in real Madrid classrooms, which is both terrifying and awesome.
+      On the side <span class="text-brand font-medium">I'm building MyPotential</span> — an AI platform that helps Spanish high school students figure out what to do with their lives. Already demoing it in real Madrid classrooms, which is both terrifying and awesome.
     outro_html: |
       I live in Madrid. I like small teams, shipping fast, and building things that solve real problems, and when I'm not doing that, I'm probably sketching or chasing good light with a camera.
     coffee_html: |
-      If you got this far let's get a <span class="text-brand">specialty coffee</span>, it's on me! (I might know one or 10 amazing places)
+      If you got this far let's get a <span class="text-brand font-medium">specialty coffee</span>, it's on me! (I might know one or 10 amazing places)
 
   layouts:
     application:
