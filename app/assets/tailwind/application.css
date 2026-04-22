@@ -1,5 +1,14 @@
 @import "tailwindcss";
 
+@utility scrollbar-stable {
+  scrollbar-gutter: stable;
+}
+
+/* Apply scrollbar-gutter to html element to prevent layout shift */
+html {
+  scrollbar-gutter: stable;
+}
+
 @theme {
   --font-dm-sans: "DM Sans", sans-serif;
   --font-jetbrains-mono: "JetBrains Mono", monospace;
