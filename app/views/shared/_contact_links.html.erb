@@ -1,0 +1,42 @@
+<ul class="font-extralight md:text-lg flex flex-wrap gap-2 my-6">
+  <li>
+    <a
+      class="flex gap-1 items-center hover:text-brand"
+      href="https://github.com/romerramos"
+      target="_blank"
+      rel="noopener noreferrer"
+    >
+      <i class="fa-brands fa-github text-base"></i><%= t("home.github") %>
+    </a>
+  </li>
+  <li>
+    <a
+      class="flex gap-1 items-center hover:text-brand"
+      href="https://linkedin.com/in/romerramos"
+      target="_blank"
+      rel="noopener noreferrer"
+    >
+      <i class="fa-brands fa-linkedin text-base"></i><%= t("home.linkedin") %>
+    </a>
+  </li>
+  <li>
+    <%= link_to(I18n.locale == :es ? "/romer_ramos_spanish.pdf" : "/romer_ramos_english.pdf",
+        target: "_blank",
+        class: "flex gap-1 items-center hover:text-brand") do %>
+      <i class="fa-solid fa-file-pdf text-base"></i><%= t("home.resume") %>
+    <% end %>
+  </li>
+  <li>
+    <a
+      class="flex gap-1 items-center hover:text-brand"
+      href="mailto:romerramos@gmail.com"
+    >
+      <i class="fa-solid fa-at text-base"></i><%= t("home.email") %>
+    </a>
+  </li>
+  <li>
+    <a class="flex gap-1 items-center hover:text-brand" href="tel:+34722781489">
+      <i class="fa-solid fa-phone text-base"></i><%= t("home.phone") %>
+    </a>
+  </li>
+</ul>

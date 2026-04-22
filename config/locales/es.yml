@@ -1,6 +1,6 @@
 es:
   nav:
-    resume: "CV"
+    home: "Inicio"
     about: "Bio"
     art: "Arte"
     jot_spot: "Jot Spot"
@@ -14,11 +14,15 @@ es:
     linkedin: "LinkedIn"
     email: "Correo"
     phone: "Teléfono"
+    resume: "CV"
 
   footer:
     built_in_madrid: "%{year} Web creada en Madrid"
     built_with_love_html: |
       Yo fui creado con <i class="fa-regular fa-heart text-brand/70"></i> en Venezuela
+
+  about:
+    heading: "Desarrollo cosas en internet."
 
   layouts:
     application:

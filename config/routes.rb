@@ -12,6 +12,7 @@ Rails.application.routes.draw do
   scope "/:locale", locale: /en|es/ do
     # Defines the root path route ("/")
     root "home#index"
+    resource :about, only: [ :show ], controller: "about"
   end
 
   # Redirect root to default locale
