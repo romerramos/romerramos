@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Admin — Romer Ramos</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= yield :head %>
+
+    <%= stylesheet_link_tag :app, "data-turbo-track": "reload" %>
+    <%= javascript_importmap_tags %>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&display=swap"
+      rel="stylesheet"
+    >
+  </head>
+
+  <body class="bg-navy min-h-svh text-white font-dm-sans">
+    <header
+      class="
+        flex justify-between items-center h-16 md:h-20 px-6 md:px-10 border-b
+        border-white/10
+      "
+    >
+      <div class="font-jetbrains-mono font-extrabold text-lg md:text-xl">
+        <%= image_tag "logo.svg", class: "h-3 md:h-4" %>
+      </div>
+      <% if authenticated? %>
+        <div class="flex items-center gap-4">
+          <span class="text-sm text-white/60"><%= Current.session.user.email_address %></span>
+          <%= button_to "Log out",
+          session_path,
+          method: :delete,
+          class: "text-sm font-semibold text-brand hover:text-brand/80 cursor-pointer" %>
+        </div>
+      <% end %>
+    </header>
+
+    <main class="flex flex-col items-center justify-center px-6 py-12">
+      <%= yield %>
+    </main>
+  </body>
+</html>

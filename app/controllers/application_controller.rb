@@ -1,4 +1,5 @@
 class ApplicationController < ActionController::Base
+  include Authentication
   # Only allow modern browsers supporting webp images, web push, badges, import maps, CSS nesting, and CSS :has.
   allow_browser versions: :modern
 
@@ -7,11 +8,12 @@ class ApplicationController < ActionController::Base
 
   before_action :set_locale
 
-  def default_url_options
-    { locale: I18n.locale }
-  end
-
   private
+
+  def request_authentication
+    session[:return_to_after_authenticating] = request.url
+    redirect_to login_path
+  end
 
   def set_locale
     locale = params[:locale] || I18n.default_locale
