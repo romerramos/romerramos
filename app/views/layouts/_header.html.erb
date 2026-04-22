@@ -10,7 +10,11 @@
   </div>
   <nav class="grow flex justify-center">
     <ol class="flex gap-2 md:gap-8 uppercase font-semibold text-sm md:text-xl">
-      <li><%= t("nav.resume") %></li>
+      <li>
+        <%= link_to t("nav.resume"),
+        I18n.locale == :es ? "/romer_ramos_spanish.pdf" : "/romer_ramos_english.pdf",
+        target: "_blank" %>
+      </li>
       <li><%= t("nav.about") %></li>
       <li><%= t("nav.art") %></li>
       <li><%= t("nav.jot_spot") %></li>
@@ -19,8 +23,8 @@
   <%= link_to({ locale: I18n.locale == :es ? "en" : "es" }) do %>
     <div
       class="
-        border border-brand px-2 py-1 border-2 rounded text-xs md:text-xl
-        cursor-pointer select-none
+        border border-brand px-2 py-1 border-2 rounded text-xs md:text-xl cursor-pointer
+        select-none
       "
     >
       <span class="font-semibold <%= I18n.locale == :en ? 'text-brand' : '' %>">EN</span>/<span class="font-semibold <%= I18n.locale == :es ? 'text-brand' : '' %>">ES</span>
