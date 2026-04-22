@@ -25,9 +25,9 @@
         border-white/10
       "
     >
-      <div class="font-jetbrains-mono font-extrabold text-lg md:text-xl">
+      <%= link_to root_path, class: "font-jetbrains-mono font-extrabold text-lg md:text-xl" do %>
         <%= image_tag "logo.svg", class: "h-3 md:h-4" %>
-      </div>
+      <% end %>
       <% if authenticated? %>
         <div class="flex items-center gap-4">
           <span class="text-sm text-white/60"><%= Current.session.user.email_address %></span>

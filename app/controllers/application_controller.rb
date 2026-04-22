@@ -20,4 +20,8 @@ class ApplicationController < ActionController::Base
     locale = I18n.default_locale.to_s unless I18n.available_locales.include?(locale.to_sym)
     I18n.locale = locale
   end
+
+  def default_url_options
+    { locale: I18n.locale }
+  end
 end
