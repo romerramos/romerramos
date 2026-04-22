@@ -9,16 +9,16 @@ es:
     hello: "Hola, soy"
     name: "Romer"
     bio_html: |
-      Desarrollador <span class="text-brand font-light">full stack</span> en Madrid que crea productos web y ama el <span class="text-brand font-light">café</span>. También hago <span class="text-brand font-light">fotos</span> a todo lo que se mueve, tengo más <span class="text-brand font-light">videojuegos</span> de los que puedo jugar sin quedarme dormido.
+      Desarrollador <span class="text-brand font-light">full stack</span> en Madrid que crea productos y ama el <span class="text-brand font-light">café</span>. También hago <span class="text-brand font-light">fotos</span> a todo lo que se mueve, tengo más <span class="text-brand font-light">videojuegos</span> de los que puedo jugar sin quedarme dormido.
     github: "Github"
     linkedin: "LinkedIn"
     email: "Correo"
     phone: "Teléfono"
 
   footer:
-    built_in_madrid: "%{year} Sitio web construido en Madrid"
+    built_in_madrid: "%{year} Web creada en Madrid"
     built_with_love_html: |
-      Yo fui construido con <i class="fa-regular fa-heart text-brand/70"></i> en Venezuela
+      Yo fui creado con <i class="fa-regular fa-heart text-brand/70"></i> en Venezuela
 
   layouts:
     application:

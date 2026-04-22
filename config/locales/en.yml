@@ -9,14 +9,14 @@ en:
     hello: "Hello, I’m"
     name: "Romer"
     bio_html: |
-      A full stack <span class="text-brand font-light">developer</span> based in Madrid who builds web products and loves <span class="text-brand font-light">coffee</span>. I also take <span class="text-brand font-light">photos</span> of anything and everything, I own more <span class="text-brand font-light">video games</span> than I can stay awake to use.
+      A full stack <span class="text-brand font-light">developer</span> based in Madrid who builds products and loves <span class="text-brand font-light">coffee</span>. I also take <span class="text-brand font-light">photos</span> of anything and everything, I own more <span class="text-brand font-light">video games</span> than I can stay awake to use.
     github: "Github"
     linkedin: "LinkedIn"
     email: "Email"
     phone: "Phone"
 
   footer:
-    built_in_madrid: "%{year} Website built in Madrid"
+    built_in_madrid: "%{year} Web built in Madrid"
     built_with_love_html: |
       I was built with <i class="fa-regular fa-heart text-brand/70"></i> in Venezuela
 
