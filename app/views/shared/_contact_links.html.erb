@@ -20,7 +20,7 @@
     </a>
   </li>
   <li>
-    <%= link_to(I18n.locale == :es ? "/romer_ramos_spanish.pdf" : "/romer_ramos_english.pdf",
+    <%= link_to(I18n.locale == :es ? "/cv_spanish.pdf" : "/cv_english.pdf",
         target: "_blank",
         class: "flex gap-1 items-center hover:text-brand") do %>
       <i class="fa-solid fa-file-pdf text-base"></i><%= t("home.resume") %>
