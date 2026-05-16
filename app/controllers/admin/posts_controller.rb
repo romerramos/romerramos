@@ -3,7 +3,7 @@ module Admin
     before_action :set_post, only: %i[ show edit update destroy ]
 
     def index
-      @posts = Post.order(created_at: :desc)
+      @posts = Post.order(created_at: :desc).includes(:post_translations)
     end
 
     def show
@@ -11,6 +11,7 @@ module Admin
 
     def new
       @post = Post.new
+      @post.post_translations.build(locale: "en")
     end
 
     def create
@@ -24,6 +25,11 @@ module Admin
     end
 
     def edit
+      I18n.available_locales.each do |locale|
+        unless @post.post_translations.exists?(locale: locale.to_s)
+          @post.post_translations.build(locale: locale.to_s)
+        end
+      end
     end
 
     def update
@@ -42,11 +48,14 @@ module Admin
     private
 
       def set_post
-        @post = Post.find(params[:id])
+        @post = Post.includes(:post_translations).find(params[:id])
       end
 
       def post_params
-        params.require(:post).permit(:title, :description, :content, :published_at)
+        params.require(:post).permit(
+          :published_at,
+          post_translations_attributes: [ :id, :locale, :title, :description, :content, :_destroy ]
+        )
       end
   end
 end
