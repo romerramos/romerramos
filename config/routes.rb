@@ -25,6 +25,7 @@ Rails.application.routes.draw do
     # Defines the root path route ("/")
     root "home#index"
     resource :about, only: [ :show ], controller: "about"
+    resource :jot_spot, only: [ :show ], controller: "jot_spot"
   end
 
   # Redirect root to default locale

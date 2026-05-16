@@ -1,5 +1,7 @@
 <header
-  class="flex justify-between py-4 px-6 md:px-10 h-16 md:h-24 items-center shrink-0"
+  class="
+    flex justify-between py-4 px-6 md:px-10 h-16 md:h-24 items-center shrink-0
+  "
 >
   <div
     class="
@@ -30,7 +32,7 @@
       </li>
       <li>
         <%= link_to t("nav.jot_spot"),
-        "#",
+        jot_spot_path,
         class:
           "hover:text-brand #{current_page?("#") ? "text-brand font-bold underline" : ""}" %>
       </li>

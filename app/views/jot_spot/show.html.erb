@@ -1,0 +1,5 @@
+<div class="h-full w-full flex justify-center overflow-y-auto">
+  <% @posts.each do |post| %>
+    <%= render "posts/post", post: post %>
+  <% end %>
+</div>
