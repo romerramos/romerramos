@@ -73,7 +73,7 @@ class Admin::PhotosControllerTest < ActionDispatch::IntegrationTest
     sign_in_as(@user)
     second = Photo.create!(title_en: "Two", image: sample_image)
 
-    patch reorder_admin_photos_path, params: { ids: [ second.id, @photo.id ] }, as: :json
+    patch reorder_admin_photos_path, params: { order: "#{second.id},#{@photo.id}" }
 
     assert_response :no_content
     assert_equal 1, second.reload.position

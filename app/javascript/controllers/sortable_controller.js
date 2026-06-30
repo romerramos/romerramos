@@ -1,14 +1,10 @@
 import { Controller } from "@hotwired/stimulus"
 
 // Drag-and-drop reordering using the native HTML5 Drag and Drop API.
-// Persists the new order by PATCHing the ordered ids to `urlValue`.
+// On drop, the new order is written into a hidden Rails form which is
+// submitted with requestSubmit() so Turbo handles the request (and CSRF).
 export default class extends Controller {
-  static targets = ["item"]
-  static values = { url: String }
-
-  connect() {
-    this.dragEl = null
-  }
+  static targets = ["item", "form", "field"]
 
   itemTargetConnected(item) {
     item.setAttribute("draggable", "true")
@@ -39,11 +35,7 @@ export default class extends Controller {
 
     const rect = target.getBoundingClientRect()
     const after = (event.clientY - rect.top) / rect.height > 0.5
-    if (after) {
-      target.after(this.dragEl)
-    } else {
-      target.before(this.dragEl)
-    }
+    after ? target.after(this.dragEl) : target.before(this.dragEl)
   }
 
   onDrop = (event) => {
@@ -53,21 +45,11 @@ export default class extends Controller {
   onDragEnd = () => {
     if (this.dragEl) this.dragEl.classList.remove("opacity-40")
     this.dragEl = null
-    this.persist()
+    this.submit()
   }
 
-  persist() {
-    const ids = this.itemTargets.map((item) => item.dataset.id)
-    const token = document.querySelector('meta[name="csrf-token"]')?.content
-
-    fetch(this.urlValue, {
-      method: "PATCH",
-      headers: {
-        "Content-Type": "application/json",
-        "X-CSRF-Token": token,
-        Accept: "application/json"
-      },
-      body: JSON.stringify({ ids })
-    })
+  submit() {
+    this.fieldTarget.value = this.itemTargets.map((item) => item.dataset.id).join(",")
+    this.formTarget.requestSubmit()
   }
 }

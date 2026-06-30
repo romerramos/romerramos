@@ -49,8 +49,9 @@ module Admin
     end
 
     def reorder
+      ids = params[:order].to_s.split(",")
       Photo.transaction do
-        Array(params[:ids]).each_with_index do |id, index|
+        ids.each_with_index do |id, index|
           Photo.where(id: id).update_all(position: index + 1)
         end
       end
