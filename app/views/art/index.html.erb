@@ -11,29 +11,30 @@
   </div>
 
   <% if @photos.any? %>
-    <div
-      class="columns-1 sm:columns-2 lg:columns-3 gap-4"
-      data-controller="lightbox"
-    >
-      <% @photos.each_with_index do |photo, index| %>
-        <button
-          type="button"
-          class="block w-full mb-4 break-inside-avoid cursor-zoom-in group"
-          data-action="lightbox#open"
-          data-lightbox-target="item"
-          data-index="<%= index %>"
-          data-large-url="<%= url_for(photo.image.variant(:large)) %>"
-          data-title="<%= photo.display_title %>"
-          data-caption="<%= photo.display_caption %>"
-          aria-label="<%= photo.display_title.presence || t("art.view_photo") %>"
-        >
-          <%= image_tag photo.image.variant(:thumb),
-                loading: "lazy",
-                alt: photo.display_title.presence || t("art.photo_alt"),
-                style: "aspect-ratio: #{photo.aspect_ratio}",
-                class: "w-full rounded-lg object-cover bg-white/5 transition duration-200 group-hover:opacity-90 group-hover:ring-2 group-hover:ring-brand" %>
-        </button>
-      <% end %>
+    <div data-controller="lightbox">
+      <div class="columns-1 sm:columns-2 lg:columns-3 gap-4">
+        <% @photos.each_with_index do |photo, index| %>
+          <button
+            type="button"
+            class="block w-full mb-4 break-inside-avoid cursor-zoom-in group"
+            data-action="lightbox#open"
+            data-lightbox-target="item"
+            data-index="<%= index %>"
+            data-large-url="<%= url_for(photo.image.variant(:large)) %>"
+            data-title="<%= photo.display_title %>"
+            data-caption="<%= photo.display_caption %>"
+            aria-label="<%= photo.display_title.presence || t("art.view_photo") %>"
+          >
+            <%= image_tag photo.image.variant(:thumb),
+                  loading: "lazy",
+                  alt: photo.display_title.presence || t("art.photo_alt"),
+                  style: "aspect-ratio: #{photo.aspect_ratio}",
+                  class: "w-full rounded-lg object-cover bg-white/5 transition duration-200 group-hover:opacity-90 group-hover:ring-2 group-hover:ring-brand" %>
+          </button>
+        <% end %>
+      </div>
+
+      <%= render "lightbox" %>
     </div>
   <% else %>
     <p class="text-white/40 text-lg font-light py-20 text-center">

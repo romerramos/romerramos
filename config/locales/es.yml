@@ -54,6 +54,9 @@ es:
     empty: "Aún no hay fotos. Vuelve pronto."
     view_photo: "Ver foto"
     photo_alt: "Fotografía de Romer Ramos"
+    close: "Cerrar"
+    previous: "Foto anterior"
+    next: "Foto siguiente"
 
   admin:
     dashboard:

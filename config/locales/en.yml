@@ -54,6 +54,9 @@ en:
     empty: "No photos yet. Check back soon."
     view_photo: "View photo"
     photo_alt: "Photograph by Romer Ramos"
+    close: "Close"
+    previous: "Previous photo"
+    next: "Next photo"
 
   admin:
     dashboard:
