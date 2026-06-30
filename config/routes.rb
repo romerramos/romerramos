@@ -19,12 +19,16 @@ Rails.application.routes.draw do
   namespace :admin do
     get "/", to: redirect("/admin/jot-spot")
     get "jot-spot", to: "jot_spot#index"
+    resources :photos, except: [ :show ] do
+      patch :reorder, on: :collection
+    end
   end
 
   scope "/:locale", locale: /en|es/ do
     # Defines the root path route ("/")
     root "home#index"
     resource :about, only: [ :show ], controller: "about"
+    get "art", to: "art#index", as: :art
   end
 
   # Redirect root to default locale
