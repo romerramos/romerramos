@@ -1,14 +1,5 @@
 <div class="w-full max-w-4xl">
-  <% if notice = flash[:notice] %>
-    <p
-      class="
-        py-2 px-3 bg-brand/20 mb-5 text-brand font-medium rounded-lg inline-block
-      "
-      id="notice"
-    ><%= notice %></p>
-  <% end %>
-
-  <% admin_translation = @post.translation_for(I18n.default_locale) || @post.default_translation %>
+  <% admin_translation = @post.display_translation(I18n.default_locale) %>
   <%= render "posts/post", post: @post, admin: true, translation: admin_translation %>
 
   <div class="mt-10">

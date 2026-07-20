@@ -1,7 +1,7 @@
 <div class="h-full w-full flex flex-col items-center overflow-y-auto space-y-4">
   <% @posts.each do |post| %>
     <div class="border-b border-white/10 w-full lg:w-5xl py-3 px-3">
-      <%= render "posts/post", post: post, translation: post.translation_for(I18n.locale) %>
+      <%= render "posts/post", post: post, translation: post.display_translation %>
     </div>
   <% end %>
 </div>

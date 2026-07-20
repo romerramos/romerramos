@@ -83,6 +83,26 @@ en:
       created: "Photos added."
       updated: "Photo updated."
       destroyed: "Photo deleted."
+    posts:
+      new: "New Post"
+      edit: "Edit Post"
+      created: "Post created successfully."
+      updated: "Post updated successfully."
+      destroyed: "Post deleted successfully."
+      errors:
+        one: "1 error prohibited this post from being saved:"
+        other: "%{count} errors prohibited this post from being saved:"
+      published_at: "Published at"
+      published_at_hint: "Leave blank for a draft, or set a date in the past or future."
+      title: "Title (%{language})"
+      title_placeholder: "Post title"
+      description: "Description (%{language})"
+      description_placeholder: "A short preview of the content"
+      description_hint: "Keep it concise; this is the preview shown in listings."
+      content: "Content (%{language})"
+      content_placeholder: "Write your Markdown content here..."
+      cancel: "Cancel"
+
   activerecord:
     errors:
       models:

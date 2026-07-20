@@ -6,22 +6,21 @@ class ApplicationController < ActionController::Base
   # Changes to the importmap will invalidate the etag for HTML responses
   stale_when_importmap_changes
 
-  before_action :set_locale
+  around_action :switch_locale
 
   private
 
-  def request_authentication
-    session[:return_to_after_authenticating] = request.url
-    redirect_to login_path
-  end
+    def request_authentication
+      session[:return_to_after_authenticating] = request.url
+      redirect_to login_path
+    end
 
-  def set_locale
-    locale = params[:locale] || I18n.default_locale
-    locale = I18n.default_locale.to_s unless I18n.available_locales.include?(locale.to_sym)
-    I18n.locale = locale
-  end
+    def switch_locale(&action)
+      locale = params[:locale].presence_in(I18n.available_locales.map(&:to_s)) || I18n.default_locale
+      I18n.with_locale(locale, &action)
+    end
 
-  def default_url_options
-    I18n.locale == I18n.default_locale ? {} : { locale: I18n.locale }
-  end
+    def default_url_options
+      I18n.locale == I18n.default_locale ? {} : { locale: I18n.locale }
+    end
 end

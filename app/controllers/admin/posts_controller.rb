@@ -3,7 +3,7 @@ module Admin
     before_action :set_post, only: %i[ show edit update destroy ]
 
     def index
-      @posts = Post.order(created_at: :desc).includes(:post_translations)
+      @posts = Post.recent_first.includes(:post_translations)
     end
 
     def show
@@ -11,38 +11,36 @@ module Admin
 
     def new
       @post = Post.new
-      @post.post_translations.build(locale: "en")
+      build_missing_translations
     end
 
     def create
       @post = Post.new(post_params)
 
       if @post.save
-        redirect_to admin_post_path(@post), notice: "Post created successfully."
+        redirect_to admin_post_path(@post), notice: t("admin.posts.created")
       else
+        build_missing_translations
         render :new, status: :unprocessable_entity
       end
     end
 
     def edit
-      I18n.available_locales.each do |locale|
-        unless @post.post_translations.exists?(locale: locale.to_s)
-          @post.post_translations.build(locale: locale.to_s)
-        end
-      end
+      build_missing_translations
     end
 
     def update
       if @post.update(post_params)
-        redirect_to admin_post_path(@post), notice: "Post updated successfully."
+        redirect_to admin_post_path(@post), notice: t("admin.posts.updated")
       else
+        build_missing_translations
         render :edit, status: :unprocessable_entity
       end
     end
 
     def destroy
-      @post.destroy
-      redirect_to admin_posts_path, notice: "Post deleted successfully.", status: :see_other
+      @post.destroy!
+      redirect_to admin_posts_path, notice: t("admin.posts.destroyed"), status: :see_other
     end
 
     private
@@ -56,6 +54,13 @@ module Admin
           :published_at,
           post_translations_attributes: [ :id, :locale, :title, :description, :content, :_destroy ]
         )
+      end
+
+      def build_missing_translations
+        existing_locales = @post.post_translations.map(&:locale)
+        I18n.available_locales.each do |locale|
+          @post.post_translations.build(locale: locale.to_s) unless locale.to_s.in?(existing_locales)
+        end
       end
   end
 end
