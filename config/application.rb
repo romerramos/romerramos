@@ -11,6 +11,8 @@ module Romerramos
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 8.1
 
+    config.active_storage.variant_processor = :vips
+
     config.i18n.available_locales = [ :en, :es ]
     config.i18n.default_locale = :en
 
