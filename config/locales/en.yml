@@ -48,15 +48,15 @@ en:
       If you got this far let's get a <span class="text-brand font-medium">specialty coffee</span>, it's on me! (I might know one or 10 amazing places)
 
   art:
-    heading_html: 'My favorite <span class="text-brand">shots</span>'
-    heading: "My favorite shots"
-    intro: "A handful of moments I caught with my camera — chasing good light around Madrid and beyond."
-    empty: "No photos yet. Check back soon."
-    view_photo: "View photo"
-    photo_alt: "Photograph by Romer Ramos"
+    heading_html: 'What catches <span class="text-brand">my eye</span>'
+    heading: "What catches my eye"
+    intro: "Photos, drawings, and things worth showing."
+    empty: "Nothing here yet. Check back soon."
+    view_photo: "View image"
+    photo_alt: "Image by Romer Ramos"
     close: "Close"
-    previous: "Previous photo"
-    next: "Next photo"
+    previous: "Previous image"
+    next: "Next image"
 
   admin:
     dashboard:
@@ -67,7 +67,7 @@ en:
       subtitle: "Manage your gallery"
       new: "Add photos"
       upload: "Upload"
-      upload_hint: "Select one or more images (JPG, PNG, WEBP or GIF, up to 20MB each)."
+      upload_hint: "Select one or more images (JPG, PNG, WEBP or GIF, up to 100MB each)."
       back: "Back to photos"
       edit: "Edit"
       delete: "Delete"
@@ -95,7 +95,7 @@ en:
             image:
               blank: "is required"
               invalid_type: "must be a JPG, PNG, WEBP or GIF"
-              too_large: "is too large (max 20MB)"
+              too_large: "is too large (max 100MB)"
 
   layouts:
     application:

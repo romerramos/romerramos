@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2026_06_30_093820) do
+ActiveRecord::Schema[8.1].define(version: 2026_07_20_141000) do
   create_table "active_storage_attachments", force: :cascade do |t|
     t.bigint "blob_id", null: false
     t.datetime "created_at", null: false
@@ -43,12 +43,30 @@ ActiveRecord::Schema[8.1].define(version: 2026_06_30_093820) do
     t.text "caption_en"
     t.text "caption_es"
     t.datetime "created_at", null: false
-    t.integer "position"
+    t.integer "position", null: false
     t.boolean "published", default: true, null: false
     t.string "title_en"
     t.string "title_es"
     t.datetime "updated_at", null: false
-    t.index ["position"], name: "index_photos_on_position"
+    t.index ["position"], name: "index_photos_on_position", unique: true
+  end
+
+  create_table "post_translations", force: :cascade do |t|
+    t.text "content"
+    t.datetime "created_at", null: false
+    t.string "description"
+    t.string "locale", null: false
+    t.integer "post_id", null: false
+    t.string "title", null: false
+    t.datetime "updated_at", null: false
+    t.index ["post_id", "locale"], name: "index_post_translations_on_post_id_and_locale", unique: true
+    t.index ["post_id"], name: "index_post_translations_on_post_id"
+  end
+
+  create_table "posts", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "published_at"
+    t.datetime "updated_at", null: false
   end
 
   create_table "sessions", force: :cascade do |t|
@@ -70,5 +88,6 @@ ActiveRecord::Schema[8.1].define(version: 2026_06_30_093820) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "post_translations", "posts"
   add_foreign_key "sessions", "users"
 end

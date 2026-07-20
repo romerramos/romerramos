@@ -1,9 +1,9 @@
 module Admin
   class PhotosController < Admin::BaseController
-    before_action :set_photo, only: %i[edit update destroy]
+    before_action :set_photo, only: %i[edit update destroy position]
 
     def index
-      @photos = Photo.with_attached_image
+      @photos = Photo.ordered.with_attached_image
     end
 
     def new
@@ -11,7 +11,7 @@ module Admin
     end
 
     def create
-      images = Array(params.dig(:photo, :images)).reject(&:blank?)
+      images = Array(params.dig(:photo, :images)).compact_blank
 
       if images.empty?
         @photo = Photo.new
@@ -19,15 +19,12 @@ module Admin
         return render :new, status: :unprocessable_entity
       end
 
-      created = images.map do |image|
-        photo = Photo.new(image: image)
-        photo.tap { |p| p.save }
-      end
+      factory = Photos::Factory.new(images: images)
 
-      if created.all?(&:persisted?)
+      if factory.create
         redirect_to admin_photos_path, notice: t("admin.photos.created")
       else
-        @photo = created.find { |p| !p.persisted? } || Photo.new
+        @photo = factory.invalid_photo || Photo.new
         render :new, status: :unprocessable_entity
       end
     end
@@ -48,13 +45,8 @@ module Admin
       redirect_to admin_photos_path, notice: t("admin.photos.destroyed")
     end
 
-    def reorder
-      ids = params[:order].to_s.split(",")
-      Photo.transaction do
-        ids.each_with_index do |id, index|
-          Photo.where(id: id).update_all(position: index + 1)
-        end
-      end
+    def position
+      @photo.update!(position_params)
       head :no_content
     end
 
@@ -67,6 +59,10 @@ module Admin
         params.require(:photo).permit(
           :title_en, :title_es, :caption_en, :caption_es, :published, :image
         )
+      end
+
+      def position_params
+        params.require(:photo).permit(:position)
       end
   end
 end

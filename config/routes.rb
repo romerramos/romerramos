@@ -17,10 +17,9 @@ Rails.application.routes.draw do
   get "service-worker" => "rails/pwa#service_worker", as: :pwa_service_worker
 
   namespace :admin do
-    get "/", to: redirect("/admin/jot-spot")
-    get "jot-spot", to: "jot_spot#index"
+    get "/", to: redirect("/admin/photos")
     resources :photos, except: [ :show ] do
-      patch :reorder, on: :collection
+      patch :position, on: :member
     end
   end
 

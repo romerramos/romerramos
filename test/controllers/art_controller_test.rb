@@ -16,7 +16,7 @@ class ArtControllerTest < ActionDispatch::IntegrationTest
   test "index only shows published photos" do
     get art_path(locale: :en)
 
-    assert_select "[data-lightbox-target=\"item\"]", count: 1
+    assert_select ".art-photo", count: 1
   end
 
   test "index works in spanish" do

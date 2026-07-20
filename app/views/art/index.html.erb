@@ -1,4 +1,7 @@
 <% content_for :title, "#{t("art.heading")} — Romer Ramos" %>
+<% content_for :head do %>
+  <%= stylesheet_link_tag "https://cdn.jsdelivr.net/npm/lightgallery@2.9.0/css/lightgallery-bundle.min.css" %>
+<% end %>
 
 <div class="container mx-auto px-6 md:px-0 my-10 md:my-20">
   <div class="mb-8 md:mb-12">
@@ -11,30 +14,33 @@
   </div>
 
   <% if @photos.any? %>
-    <div data-controller="lightbox">
+    <div
+      data-controller="lightbox"
+      data-lightbox-options-value='<%= { selector: ".art-photo", speed: 200, download: false, counter: false }.to_json %>'
+    >
       <div class="columns-1 sm:columns-2 lg:columns-3 gap-4">
-        <% @photos.each_with_index do |photo, index| %>
-          <button
-            type="button"
-            class="block w-full mb-4 break-inside-avoid cursor-zoom-in group"
-            data-action="lightbox#open"
-            data-lightbox-target="item"
-            data-index="<%= index %>"
-            data-large-url="<%= url_for(photo.image.variant(:large)) %>"
-            data-title="<%= photo.display_title %>"
-            data-caption="<%= photo.display_caption %>"
-            aria-label="<%= photo.display_title.presence || t("art.view_photo") %>"
-          >
+        <% @photos.each do |photo| %>
+          <%= link_to url_for(photo.image.variant(:large)),
+            class: "art-photo block w-full mb-4 break-inside-avoid cursor-zoom-in group",
+            data: { sub_html: "##{dom_id(photo, :caption)}" },
+            aria: { label: photo.display_title.presence || t("art.view_photo") } do %>
             <%= image_tag photo.image.variant(:thumb),
                   loading: "lazy",
                   alt: photo.display_title.presence || t("art.photo_alt"),
                   style: "aspect-ratio: #{photo.aspect_ratio}",
                   class: "w-full rounded-lg object-cover bg-white/5 transition duration-200 group-hover:opacity-90 group-hover:ring-2 group-hover:ring-brand" %>
-          </button>
+          <% end %>
+
+          <div id="<%= dom_id(photo, :caption) %>" class="hidden">
+            <% if photo.display_title.present? %>
+              <p class="font-semibold text-white"><%= photo.display_title %></p>
+            <% end %>
+            <% if photo.display_caption.present? %>
+              <p class="mt-1 font-light text-white/60"><%= photo.display_caption %></p>
+            <% end %>
+          </div>
         <% end %>
       </div>
-
-      <%= render "lightbox" %>
     </div>
   <% else %>
     <p class="text-white/40 text-lg font-light py-20 text-center">

@@ -1,17 +1,18 @@
 class Photo < ApplicationRecord
+  MAX_IMAGE_SIZE = 100.megabytes
+
   has_one_attached :image do |attachable|
     attachable.variant :thumb, resize_to_limit: [ 800, nil ]
     attachable.variant :large, resize_to_limit: [ 2000, 2000 ]
   end
 
   scope :published, -> { where(published: true) }
+  scope :ordered, -> { order(:position, :id) }
 
-  default_scope -> { order(:position, :id) }
+  positioned
 
   validates :image, presence: true
   validate :acceptable_image
-
-  before_validation :assign_position, on: :create
 
   # Locale-aware readers that fall back to whichever locale has content.
   def display_title
@@ -27,7 +28,6 @@ class Photo < ApplicationRecord
   def aspect_ratio
     return "1 / 1" unless image.attached?
 
-    image.analyze unless image.analyzed?
     width  = image.metadata["width"]
     height = image.metadata["height"]
     return "1 / 1" if width.blank? || height.blank?
@@ -42,10 +42,6 @@ class Photo < ApplicationRecord
         public_send("#{attr}_es").presence
     end
 
-    def assign_position
-      self.position ||= (self.class.unscoped.maximum(:position) || 0) + 1
-    end
-
     def acceptable_image
       return unless image.attached?
 
@@ -53,7 +49,7 @@ class Photo < ApplicationRecord
         errors.add(:image, :invalid_type)
       end
 
-      if image.blob.byte_size > 20.megabytes
+      if image.blob.byte_size > MAX_IMAGE_SIZE
         errors.add(:image, :too_large)
       end
     end

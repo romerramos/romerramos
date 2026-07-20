@@ -48,15 +48,15 @@ es:
       Si has llegado hasta aquí, vamos a tomarnos un <span class="text-brand font-medium">café</span>, ¡invito yo! (Puede que conozca una... o 10 cafeterías buenas).
 
   art:
-    heading_html: 'Mis <span class="text-brand">fotos</span> favoritas'
-    heading: "Mis fotos favoritas"
-    intro: "Algunos momentos que capté con mi cámara — persiguiendo buena luz por Madrid y más allá."
-    empty: "Aún no hay fotos. Vuelve pronto."
-    view_photo: "Ver foto"
-    photo_alt: "Fotografía de Romer Ramos"
+    heading_html: 'Lo que me llama <span class="text-brand">la atención</span>'
+    heading: "Lo que me llama la atención"
+    intro: "Fotos, dibujos y cosas que merece la pena mostrar."
+    empty: "Todavía no hay nada por aquí. Vuelve pronto."
+    view_photo: "Ver imagen"
+    photo_alt: "Imagen de Romer Ramos"
     close: "Cerrar"
-    previous: "Foto anterior"
-    next: "Foto siguiente"
+    previous: "Imagen anterior"
+    next: "Imagen siguiente"
 
   admin:
     dashboard:
@@ -67,7 +67,7 @@ es:
       subtitle: "Gestiona tu galería"
       new: "Añadir fotos"
       upload: "Subir"
-      upload_hint: "Selecciona una o más imágenes (JPG, PNG, WEBP o GIF, hasta 20MB cada una)."
+      upload_hint: "Selecciona una o más imágenes (JPG, PNG, WEBP o GIF, hasta 100MB cada una)."
       back: "Volver a fotos"
       edit: "Editar"
       delete: "Eliminar"
@@ -95,7 +95,7 @@ es:
             image:
               blank: "es obligatoria"
               invalid_type: "debe ser JPG, PNG, WEBP o GIF"
-              too_large: "es demasiado grande (máx. 20MB)"
+              too_large: "es demasiado grande (máx. 100MB)"
 
   layouts:
     application:
