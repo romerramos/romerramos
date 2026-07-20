@@ -19,6 +19,7 @@ Rails.application.routes.draw do
   namespace :admin do
     get "/", to: redirect("/admin/posts")
     resources :posts
+    resources :photos, except: [ :show ]
   end
 
   scope "/:locale", locale: /en|es/ do
@@ -26,6 +27,7 @@ Rails.application.routes.draw do
     root "home#index"
     resource :about, only: [ :show ], controller: "about"
     resource :jot_spot, only: [ :show ], controller: "jot_spot"
+    get "art", to: "art#index", as: :art
   end
 
   # Redirect root to default locale

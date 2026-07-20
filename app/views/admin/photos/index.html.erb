@@ -1,0 +1,61 @@
+<% content_for :title, "#{t("admin.photos.title")} — Admin" %>
+
+<div class="w-full max-w-5xl">
+  <div class="flex items-center justify-between mb-2">
+    <div>
+      <h1 class="text-3xl md:text-4xl font-bold">
+        <%= t("admin.photos.title") %>
+      </h1>
+      <p class="text-white/60 font-light"><%= t("admin.photos.subtitle") %></p>
+    </div>
+    <%= link_to t("admin.photos.new"), new_admin_photo_path,
+      class: "rounded-md px-5 py-2.5 bg-brand hover:bg-brand/90 text-white font-medium" %>
+  </div>
+
+  <% if @photos.any? %>
+    <p class="text-white/40 text-sm font-light mb-6"><%= t("admin.photos.reorder_hint") %></p>
+
+    <div
+      class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4"
+      data-controller="admin--photo-reorder"
+      data-admin--photo-reorder-animation-value="150"
+    >
+      <% @photos.each do |photo| %>
+        <div
+          id="<%= dom_id(photo, :admin) %>"
+          class="relative rounded-lg overflow-hidden bg-white/5 border border-white/10 cursor-move group"
+        >
+          <%= form_with model: [ :admin, photo ], class: "hidden", data: { "admin--photo-reorder-form": true } do |form| %>
+            <%= form.hidden_field :position %>
+          <% end %>
+
+          <%= image_tag photo.image.variant(:thumb),
+                alt: photo.display_title.to_s,
+                class: "w-full h-40 object-cover" %>
+
+          <% unless photo.published? %>
+            <span class="absolute top-2 left-2 text-[10px] uppercase font-semibold tracking-wide bg-navy/80 text-white/80 px-2 py-0.5 rounded">
+              <%= t("admin.photos.hidden_badge") %>
+            </span>
+          <% end %>
+
+          <div class="absolute inset-x-0 bottom-0 bg-gradient-to-t from-navy/90 to-transparent p-2 flex items-end justify-between gap-2">
+            <span class="text-xs text-white/80 font-light truncate">
+              <%= photo.display_title.presence || t("admin.photos.untitled") %>
+            </span>
+            <span class="flex items-center gap-2 shrink-0">
+              <%= link_to t("admin.photos.edit"), edit_admin_photo_path(photo),
+                    class: "text-xs leading-none font-semibold text-brand hover:text-brand/80" %>
+              <%= button_to t("admin.photos.delete"), admin_photo_path(photo),
+                    method: :delete,
+                    form: { class: "flex", data: { turbo_confirm: t("admin.photos.delete_confirm") } },
+                    class: "text-xs leading-none font-semibold text-red-400 hover:text-red-300 cursor-pointer" %>
+            </span>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  <% else %>
+    <p class="text-white/40 text-lg font-light py-16 text-center"><%= t("admin.photos.empty") %></p>
+  <% end %>
+</div>

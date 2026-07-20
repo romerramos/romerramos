@@ -19,13 +19,13 @@ gem "tailwindcss-rails"
 # Build JSON APIs with ease [https://github.com/rails/jbuilder]
 gem "jbuilder"
 
-  # Use Active Model has_secure_password [https://guides.rubyonrails.org/active_model_basics.html#securepassword]
-  gem "bcrypt", "~> 3.1.7"
+# Use Active Model has_secure_password [https://guides.rubyonrails.org/active_model_basics.html#securepassword]
+gem "bcrypt", "~> 3.1.7"
 
 # GitHub-style markdown editor for Rails
-  gem "marksmith"
-  # Markdown parser for marksmith
-  gem "commonmarker"
+gem "marksmith"
+# Markdown parser for marksmith
+gem "commonmarker"
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem "tzinfo-data", platforms: %i[ windows jruby ]
@@ -47,6 +47,7 @@ gem "thruster", require: false
 # Use Active Storage variants [https://guides.rubyonrails.org/active_storage_overview.html#transforming-images]
 gem "image_processing", "~> 2.0"
 gem "ruby-vips", "~> 2.0", require: false
+gem "positioning", "~> 0.4"
 
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem

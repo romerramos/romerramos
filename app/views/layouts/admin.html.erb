@@ -17,9 +17,6 @@
       href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&display=swap"
       rel="stylesheet"
     >
-    <script
-      src="https://cdn.jsdelivr.net/npm/@tailwindcss/typography@0.5.19/src/index.min.js"
-    ></script>
   </head>
 
   <body class="bg-navy min-h-svh text-white font-dm-sans">
@@ -37,6 +34,9 @@
           <%= link_to "Jot Spot",
           admin_posts_path,
           class: "text-sm font-medium text-white/70 hover:text-brand transition-colors" %>
+          <%= link_to t("admin.photos.title"),
+          admin_photos_path,
+          class: "text-sm font-medium text-white/70 hover:text-brand transition-colors" %>
         <% end %>
       </div>
       <% if authenticated? %>
@@ -50,7 +50,13 @@
       <% end %>
     </header>
 
-    <main class="flex flex-col items-center justify-center px-6 py-12">
+    <main class="flex flex-col items-center px-6 py-12">
+      <% if notice.present? %>
+        <p class="py-2 px-3 bg-brand/20 mb-5 text-brand font-medium rounded-lg w-full max-w-5xl" role="status"><%= notice %></p>
+      <% end %>
+      <% if alert.present? %>
+        <p class="py-2 px-3 bg-red-500/20 mb-5 text-red-400 font-medium rounded-lg w-full max-w-5xl" role="alert"><%= alert %></p>
+      <% end %>
       <%= yield %>
     </main>
   </body>

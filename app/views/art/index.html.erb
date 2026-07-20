@@ -1,0 +1,50 @@
+<% content_for :title, "#{t("art.heading")} — Romer Ramos" %>
+<% content_for :head do %>
+  <%= stylesheet_link_tag "https://cdn.jsdelivr.net/npm/lightgallery@2.9.0/css/lightgallery-bundle.min.css" %>
+<% end %>
+
+<div class="container mx-auto px-6 md:px-0 my-10 md:my-20">
+  <div class="mb-8 md:mb-12">
+    <h1 class="text-4xl md:text-6xl font-bold mb-4">
+      <%= t("art.heading_html").html_safe %>
+    </h1>
+    <p class="text-xl md:text-2xl font-light text-white/70 max-w-2xl">
+      <%= t("art.intro") %>
+    </p>
+  </div>
+
+  <% if @photos.any? %>
+    <div
+      data-controller="lightbox"
+      data-lightbox-options-value='<%= { selector: ".art-photo", speed: 200, download: false, counter: false }.to_json %>'
+    >
+      <div class="columns-1 sm:columns-2 lg:columns-3 gap-4">
+        <% @photos.each do |photo| %>
+          <%= link_to url_for(photo.image.variant(:large)),
+            class: "art-photo block w-full mb-4 break-inside-avoid cursor-zoom-in group",
+            data: { sub_html: "##{dom_id(photo, :caption)}" },
+            aria: { label: photo.display_title.presence || t("art.view_photo") } do %>
+            <%= image_tag photo.image.variant(:thumb),
+                  loading: "lazy",
+                  alt: photo.display_title.presence || t("art.photo_alt"),
+                  style: "aspect-ratio: #{photo_aspect_ratio(photo)}",
+                  class: "w-full rounded-lg object-cover bg-white/5 transition duration-200 group-hover:opacity-90 group-hover:ring-2 group-hover:ring-brand" %>
+          <% end %>
+
+          <div id="<%= dom_id(photo, :caption) %>" class="hidden">
+            <% if photo.display_title.present? %>
+              <p class="font-semibold text-white"><%= photo.display_title %></p>
+            <% end %>
+            <% if photo.display_caption.present? %>
+              <p class="mt-1 font-light text-white/60"><%= photo.display_caption %></p>
+            <% end %>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  <% else %>
+    <p class="text-white/40 text-lg font-light py-20 text-center">
+      <%= t("art.empty") %>
+    </p>
+  <% end %>
+</div>

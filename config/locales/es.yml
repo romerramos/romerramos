@@ -273,6 +273,52 @@ es:
     coffee_html: |
       Si has llegado hasta aquí, vamos a tomarnos un <span class="text-brand font-medium">café</span>, ¡invito yo! (Puede que conozca una... o 10 cafeterías buenas).
 
+  art:
+    heading_html: 'Lo que me llama <span class="text-brand">la atención</span>'
+    heading: "Lo que me llama la atención"
+    intro: "Fotos, dibujos y cosas que merece la pena mostrar."
+    empty: "Todavía no hay nada por aquí. Vuelve pronto."
+    view_photo: "Ver imagen"
+    photo_alt: "Imagen de Romer Ramos"
+    close: "Cerrar"
+    previous: "Imagen anterior"
+    next: "Imagen siguiente"
+
+  admin:
+    photos:
+      title: "Fotos"
+      subtitle: "Gestiona tu galería"
+      new: "Añadir fotos"
+      upload: "Subir"
+      upload_hint: "Selecciona una o más imágenes (JPG, PNG, WEBP o GIF, hasta 100MB cada una)."
+      back: "Volver a fotos"
+      edit: "Editar"
+      delete: "Eliminar"
+      delete_confirm: "¿Eliminar esta foto? No se puede deshacer."
+      save: "Guardar cambios"
+      reorder_hint: "Arrastra las fotos para reordenar cómo aparecen en la galería."
+      published_label: "Publicada (visible en la galería)"
+      title_en: "Título (Inglés)"
+      title_es: "Título (Español)"
+      caption_en: "Descripción (Inglés)"
+      caption_es: "Descripción (Español)"
+      replace_image: "Reemplazar imagen"
+      hidden_badge: "Oculta"
+      untitled: "Sin título"
+      empty: "Aún no hay fotos. Añade las primeras."
+      created: "Fotos añadidas."
+      updated: "Foto actualizada."
+      destroyed: "Foto eliminada."
+  activerecord:
+    errors:
+      models:
+        photo:
+          attributes:
+            image:
+              blank: "es obligatoria"
+              invalid_type: "debe ser JPG, PNG, WEBP o GIF"
+              too_large: "es demasiado grande (máx. 100MB)"
+
   layouts:
     application:
       title: "Romer Ramos"

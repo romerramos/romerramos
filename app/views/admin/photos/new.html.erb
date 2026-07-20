@@ -1,0 +1,26 @@
+<% content_for :title, "#{t("admin.photos.new")} — Admin" %>
+
+<div class="w-full max-w-xl">
+  <%= link_to "← #{t("admin.photos.back")}", admin_photos_path,
+    class: "text-sm text-white/60 hover:text-brand" %>
+
+  <h1 class="text-3xl md:text-4xl font-bold mt-2 mb-6"><%= t("admin.photos.new") %></h1>
+
+  <% if @photo.errors.any? %>
+    <p class="py-2 px-3 bg-red-500/20 mb-5 text-red-400 font-medium rounded-lg">
+      <%= @photo.errors.full_messages.to_sentence %>
+    </p>
+  <% end %>
+
+  <%= form_with url: admin_photos_path, method: :post, multipart: true do |form| %>
+    <label class="block text-sm font-medium text-white/80 mb-2">
+      <%= t("admin.photos.upload") %>
+    </label>
+    <%= file_field_tag "photo[images][]", multiple: true, accept: "image/png,image/jpeg,image/webp,image/gif",
+      class: "block w-full text-sm text-white/80 file:mr-4 file:rounded-md file:border-0 file:bg-brand file:px-4 file:py-2 file:text-white file:font-medium file:cursor-pointer rounded-md border border-white/20 bg-white/5 p-2" %>
+    <p class="text-white/40 text-xs font-light mt-2"><%= t("admin.photos.upload_hint") %></p>
+
+    <%= form.submit t("admin.photos.upload"),
+      class: "mt-6 rounded-md px-5 py-2.5 bg-brand hover:bg-brand/90 text-white font-medium cursor-pointer" %>
+  <% end %>
+</div>
