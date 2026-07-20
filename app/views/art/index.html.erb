@@ -27,7 +27,7 @@
             <%= image_tag photo.image.variant(:thumb),
                   loading: "lazy",
                   alt: photo.display_title.presence || t("art.photo_alt"),
-                  style: "aspect-ratio: #{photo.aspect_ratio}",
+                  style: "aspect-ratio: #{photo_aspect_ratio(photo)}",
                   class: "w-full rounded-lg object-cover bg-white/5 transition duration-200 group-hover:opacity-90 group-hover:ring-2 group-hover:ring-brand" %>
           <% end %>
 

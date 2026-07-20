@@ -22,8 +22,10 @@ class Admin::PhotosControllerTest < ActionDispatch::IntegrationTest
     get admin_photos_path
 
     assert_response :success
-    assert_select "[data-controller=\"sortable\"]"
-    assert_select "[data-controller=\"sortable\"] > [data-sortable-update-url]", count: Photo.count
+    assert_select "[data-controller=\"admin--photo-reorder\"]"
+    assert_select "[data-controller=\"admin--photo-reorder\"] > div", count: Photo.count do
+      assert_select "form[data-admin--photo-reorder-form] input[name=\"photo[position]\"]", count: 1
+    end
   end
 
   test "new renders" do
@@ -80,9 +82,9 @@ class Admin::PhotosControllerTest < ActionDispatch::IntegrationTest
     sign_in_as(@user)
     second = Photo.create!(title_en: "Two", image: sample_image)
 
-    patch position_admin_photo_path(second), params: { photo: { position: 1 } }
+    patch admin_photo_path(second), params: { photo: { position: 1 } }
 
-    assert_response :no_content
+    assert_redirected_to admin_photos_path
     assert_equal 1, second.reload.position
     assert_equal 2, @photo.reload.position
   end

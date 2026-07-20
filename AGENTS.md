@@ -1,5 +1,7 @@
 # Agent Instructions
 
+- I dont like custom actions on Controllers, stick to CRUD actions, if you need to create custom actions only to edit the same resource (e.g. update the position) just use the update method, if the action is "custom" enough then use a new controller that describe the resource/action clearly using the Rails naming conventions.
+- I dont like HTTP requests coming from the client, instead I prefer forms (even hidden forms if needed) that way we keep everything in the Rails way avoiding weird hacks on authenticity tokens, CSRF, etc. Keep in mind that you might need to use requestSubmit instead of subminting the form fron JS directly
 - A concept directory should match the entity or concept owned by that code. Follow Rails autoloading conventions so the directory and file path correspond to the class or module they define. For example, `app/concepts/charts/service.rb` should define `Charts::Service`.
 - Concept file names should describe code roles or patterns, not business rules. Prefer names like `service`, `builder`, `factory`, `adapter`, `util`, `presenter`, etc.
 - A service object holds business logic that serves an entity or concept. If logic merges, aggregates, or computes across concepts, choose the concept the action serves; if ownership is unclear, create a new concept and service object.

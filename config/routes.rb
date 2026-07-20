@@ -18,9 +18,7 @@ Rails.application.routes.draw do
 
   namespace :admin do
     get "/", to: redirect("/admin/photos")
-    resources :photos, except: [ :show ] do
-      patch :position, on: :member
-    end
+    resources :photos, except: [ :show ]
   end
 
   scope "/:locale", locale: /en|es/ do

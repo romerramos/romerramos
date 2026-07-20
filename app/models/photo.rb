@@ -23,18 +23,6 @@ class Photo < ApplicationRecord
     localized(:caption)
   end
 
-  # CSS `aspect-ratio` value (e.g. "3 / 2") so the masonry grid reserves space
-  # before the image loads. Falls back to a neutral 1/1 when dimensions are unknown.
-  def aspect_ratio
-    return "1 / 1" unless image.attached?
-
-    width  = image.metadata["width"]
-    height = image.metadata["height"]
-    return "1 / 1" if width.blank? || height.blank?
-
-    "#{width} / #{height}"
-  end
-
   private
     def localized(attr)
       public_send("#{attr}_#{I18n.locale}").presence ||

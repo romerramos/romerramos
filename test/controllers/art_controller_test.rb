@@ -11,6 +11,7 @@ class ArtControllerTest < ActionDispatch::IntegrationTest
 
     assert_response :success
     assert_select "[data-controller=\"lightbox\"]"
+    assert_select "img[style=\"aspect-ratio: 1 / 1\"]"
   end
 
   test "index only shows published photos" do
