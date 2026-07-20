@@ -8,7 +8,7 @@ class Admin::PhotosControllerTest < ActionDispatch::IntegrationTest
 
   test "requires authentication" do
     get admin_photos_path
-    assert_redirected_to login_path(locale: :en)
+    assert_redirected_to login_path
   end
 
   test "index lists photos when signed in" do
@@ -32,7 +32,7 @@ class Admin::PhotosControllerTest < ActionDispatch::IntegrationTest
       post admin_photos_path, params: { photo: { images: [ sample_image, sample_image ] } }
     end
 
-    assert_redirected_to admin_photos_path(locale: :en)
+    assert_redirected_to admin_photos_path
   end
 
   test "create without an image is rejected" do
@@ -52,7 +52,7 @@ class Admin::PhotosControllerTest < ActionDispatch::IntegrationTest
       photo: { title_es: "Uno", caption_en: "A caption", published: "0" }
     }
 
-    assert_redirected_to admin_photos_path(locale: :en)
+    assert_redirected_to admin_photos_path
     @photo.reload
     assert_equal "Uno", @photo.title_es
     assert_equal "A caption", @photo.caption_en
@@ -66,7 +66,7 @@ class Admin::PhotosControllerTest < ActionDispatch::IntegrationTest
       delete admin_photo_path(@photo)
     end
 
-    assert_redirected_to admin_photos_path(locale: :en)
+    assert_redirected_to admin_photos_path
   end
 
   test "reorder persists the new positions" do
