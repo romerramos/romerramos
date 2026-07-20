@@ -47,6 +47,56 @@ en:
     coffee_html: |
       If you got this far let's get a <span class="text-brand font-medium">specialty coffee</span>, it's on me! (I might know one or 10 amazing places)
 
+  art:
+    heading_html: 'What catches <span class="text-brand">my eye</span>'
+    heading: "What catches my eye"
+    intro: "Photos, drawings, and things worth showing."
+    empty: "Nothing here yet. Check back soon."
+    view_photo: "View image"
+    photo_alt: "Image by Romer Ramos"
+    close: "Close"
+    previous: "Previous image"
+    next: "Next image"
+
+  admin:
+    dashboard:
+      manage_photos: "Manage Photos"
+      manage_photos_desc: "Upload, edit and reorder your gallery."
+    photos:
+      title: "Photos"
+      subtitle: "Manage your gallery"
+      new: "Add photos"
+      upload: "Upload"
+      upload_hint: "Select one or more images (JPG, PNG, WEBP or GIF, up to 100MB each)."
+      back: "Back to photos"
+      edit: "Edit"
+      delete: "Delete"
+      delete_confirm: "Delete this photo? This can't be undone."
+      save: "Save changes"
+      reorder_hint: "Drag photos to reorder how they appear in the gallery."
+      published_label: "Published (visible in the gallery)"
+      title_en: "Title (English)"
+      title_es: "Title (Spanish)"
+      caption_en: "Caption (English)"
+      caption_es: "Caption (Spanish)"
+      replace_image: "Replace image"
+      hidden_badge: "Hidden"
+      untitled: "Untitled"
+      empty: "No photos yet. Add your first ones."
+      created: "Photos added."
+      updated: "Photo updated."
+      destroyed: "Photo deleted."
+
+  activerecord:
+    errors:
+      models:
+        photo:
+          attributes:
+            image:
+              blank: "is required"
+              invalid_type: "must be a JPG, PNG, WEBP or GIF"
+              too_large: "is too large (max 100MB)"
+
   layouts:
     application:
       title: "Romer Ramos"

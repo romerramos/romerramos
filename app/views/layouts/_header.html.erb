@@ -24,9 +24,9 @@
       </li>
       <li>
         <%= link_to t("nav.art"),
-        "#",
+        art_path,
         class:
-          "hover:text-brand #{current_page?("#") ? "text-brand font-bold underline" : ""}" %>
+          "hover:text-brand #{current_page?(art_path) ? "text-brand font-bold underline" : ""}" %>
       </li>
       <li>
         <%= link_to t("nav.jot_spot"),

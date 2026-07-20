@@ -17,14 +17,15 @@ Rails.application.routes.draw do
   get "service-worker" => "rails/pwa#service_worker", as: :pwa_service_worker
 
   namespace :admin do
-    get "/", to: redirect("/admin/jot-spot")
-    get "jot-spot", to: "jot_spot#index"
+    get "/", to: redirect("/admin/photos")
+    resources :photos, except: [ :show ]
   end
 
   scope "/:locale", locale: /en|es/ do
     # Defines the root path route ("/")
     root "home#index"
     resource :about, only: [ :show ], controller: "about"
+    get "art", to: "art#index", as: :art
   end
 
   # Redirect root to default locale

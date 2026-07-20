@@ -1,0 +1,53 @@
+<% content_for :title, "#{t("admin.photos.edit")} — Admin" %>
+
+<div class="w-full max-w-xl">
+  <%= link_to "← #{t("admin.photos.back")}", admin_photos_path,
+    class: "text-sm text-white/60 hover:text-brand" %>
+
+  <h1 class="text-3xl md:text-4xl font-bold mt-2 mb-6"><%= t("admin.photos.edit") %></h1>
+
+  <% if @photo.errors.any? %>
+    <p class="py-2 px-3 bg-red-500/20 mb-5 text-red-400 font-medium rounded-lg">
+      <%= @photo.errors.full_messages.to_sentence %>
+    </p>
+  <% end %>
+
+  <div class="rounded-lg overflow-hidden bg-white/5 border border-white/10 mb-6">
+    <%= image_tag @photo.image.variant(:large), class: "w-full max-h-80 object-contain" %>
+  </div>
+
+  <%= form_with model: @photo, url: admin_photo_path(@photo), method: :patch, multipart: true do |form| %>
+    <div class="space-y-4">
+      <div>
+        <%= form.label :title_en, t("admin.photos.title_en"), class: "block text-sm font-medium text-white/80" %>
+        <%= form.text_field :title_en, class: input_class %>
+      </div>
+      <div>
+        <%= form.label :title_es, t("admin.photos.title_es"), class: "block text-sm font-medium text-white/80" %>
+        <%= form.text_field :title_es, class: input_class %>
+      </div>
+      <div>
+        <%= form.label :caption_en, t("admin.photos.caption_en"), class: "block text-sm font-medium text-white/80" %>
+        <%= form.text_area :caption_en, rows: 3, class: input_class %>
+      </div>
+      <div>
+        <%= form.label :caption_es, t("admin.photos.caption_es"), class: "block text-sm font-medium text-white/80" %>
+        <%= form.text_area :caption_es, rows: 3, class: input_class %>
+      </div>
+
+      <label class="flex items-center gap-2 text-white/80">
+        <%= form.check_box :published, class: "h-4 w-4 rounded border-white/20 bg-white/5 text-brand focus:ring-brand" %>
+        <%= t("admin.photos.published_label") %>
+      </label>
+
+      <div>
+        <%= form.label :image, t("admin.photos.replace_image"), class: "block text-sm font-medium text-white/80 mb-1" %>
+        <%= form.file_field :image, accept: "image/png,image/jpeg,image/webp,image/gif",
+          class: "block w-full text-sm text-white/80 file:mr-4 file:rounded-md file:border-0 file:bg-white/10 file:px-4 file:py-2 file:text-white file:cursor-pointer" %>
+      </div>
+    </div>
+
+    <%= form.submit t("admin.photos.save"),
+      class: "mt-6 rounded-md px-5 py-2.5 bg-brand hover:bg-brand/90 text-white font-medium cursor-pointer" %>
+  <% end %>
+</div>
