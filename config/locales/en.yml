@@ -18,8 +18,8 @@ en:
 
   footer:
     built_in_madrid: "%{year} Web built in Madrid"
-    built_with_love_html: |
-      I was built with <i class="fa-regular fa-heart text-brand/70"></i> in Venezuela
+    built_with_love_prefix: "I was built with"
+    built_with_love_suffix: "in Venezuela"
 
   about:
     heading: "I build things on the internet."
@@ -49,7 +49,8 @@ en:
       If you got this far let's get a <span class="text-brand font-medium">specialty coffee</span>, it's on me! (I might know one or 10 amazing places)
 
   art:
-    heading_html: 'What catches <span class="text-brand">my eye</span>'
+    heading_before: "What catches"
+    heading_emphasis: "my eye"
     heading: "What catches my eye"
     intro: "My photos and drawings."
     empty: "Nothing here yet. Check back soon."
@@ -94,19 +95,21 @@ en:
       updated: "Photo updated."
       destroyed: "Photo deleted."
     posts:
+      back: "Back to Jot Spot"
       new: "New Post"
       edit: "Edit Post"
       created: "Post created successfully."
       updated: "Post updated successfully."
       destroyed: "Post deleted successfully."
-      published: "Published"
-      published_hint: "Uncheck to keep this post as a draft, regardless of its publication date."
+      published: "Publish %{language}"
+      published_hint: "Only this language will become public. A title and content are required."
       errors:
         one: "1 error prohibited this post from being saved:"
         other: "%{count} errors prohibited this post from being saved:"
       published_at: "Published at"
-      published_at_hint: "Optional date shown on the post. It does not control visibility."
+      published_at_hint: "Optional date shown for this language. It does not control visibility."
       draft: "Draft"
+      published_status: "Published"
       published_on: "Published %{date}"
       published_immediately: "Published"
       title: "Title (%{language})"

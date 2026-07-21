@@ -5,5 +5,9 @@
   "
 >
   <div><%= t("footer.built_in_madrid", year: 2026) %></div>
-  <div><%= t("footer.built_with_love_html") %></div>
+  <div class="flex items-center gap-1">
+    <%= t("footer.built_with_love_prefix") %>
+    <%= lucide_icon "heart", class: "size-3 text-brand/70 md:size-5", "aria-hidden": "true" %>
+    <%= t("footer.built_with_love_suffix") %>
+  </div>
 </div>

@@ -10,20 +10,6 @@
     </div>
   <% end %>
 
-  <div class="my-5">
-    <label class="flex items-center gap-2 text-white/80">
-      <%= form.check_box :published, class: "h-4 w-4 rounded border-white/20 bg-white/5 text-brand focus:ring-brand" %>
-      <%= t("admin.posts.published") %>
-    </label>
-    <p class="text-xs text-white/40 mt-1"><%= t("admin.posts.published_hint") %></p>
-  </div>
-
-  <div class="my-5">
-    <%= form.label :published_at, t("admin.posts.published_at"), class: "block text-sm font-medium text-white/80 mb-1" %>
-    <%= form.datetime_local_field :published_at, class: "block rounded-md border border-white/20 bg-white/5 focus:border-brand focus:ring-1 focus:ring-brand px-3 py-2.5 mt-1 w-full text-white" %>
-    <p class="text-xs text-white/40 mt-1"><%= t("admin.posts.published_at_hint") %></p>
-  </div>
-
   <div class="my-5" data-controller="tabs" data-tabs-active-class="border-brand text-brand" data-tabs-inactive-class="border-transparent text-white/60">
     <div class="flex gap-1 border-b border-white/10 mb-6">
       <% I18n.available_locales.each_with_index do |locale, index| %>
@@ -42,9 +28,23 @@
         <%= tf.hidden_field :id %>
         <%= tf.hidden_field :locale %>
 
+        <div class="my-5 rounded-lg border border-white/10 bg-white/5 p-4">
+          <label class="flex items-center gap-2 text-white/80">
+            <%= tf.check_box :published, class: "h-4 w-4 rounded border-white/20 bg-white/5 text-brand focus:ring-brand" %>
+            <%= t("admin.posts.published", language: tf.object.locale.upcase) %>
+          </label>
+          <p class="mt-1 text-xs text-white/40"><%= t("admin.posts.published_hint") %></p>
+
+          <div class="mt-4">
+            <%= tf.label :published_at, t("admin.posts.published_at"), class: "block text-sm font-medium text-white/80 mb-1" %>
+            <%= tf.datetime_local_field :published_at, class: "block rounded-md border border-white/20 bg-white/5 focus:border-brand focus:ring-1 focus:ring-brand px-3 py-2.5 mt-1 w-full text-white" %>
+            <p class="mt-1 text-xs text-white/40"><%= t("admin.posts.published_at_hint") %></p>
+          </div>
+        </div>
+
         <div class="my-5">
           <%= tf.label :title, t("admin.posts.title", language: tf.object.locale.upcase), class: "block text-sm font-medium text-white/80 mb-1" %>
-          <%= tf.text_field :title, required: (tf.object.locale == I18n.default_locale.to_s), placeholder: t("admin.posts.title_placeholder"), class: "block rounded-md border border-white/20 bg-white/5 focus:border-brand focus:ring-1 focus:ring-brand px-3 py-2.5 mt-1 w-full placeholder-white/40 text-white" %>
+          <%= tf.text_field :title, placeholder: t("admin.posts.title_placeholder"), class: "block rounded-md border border-white/20 bg-white/5 focus:border-brand focus:ring-1 focus:ring-brand px-3 py-2.5 mt-1 w-full placeholder-white/40 text-white" %>
         </div>
 
         <div class="my-5">

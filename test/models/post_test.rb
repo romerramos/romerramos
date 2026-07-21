@@ -18,7 +18,6 @@ class PostTest < ActiveSupport::TestCase
 
   test "accepts multiple translated fields in one post" do
     post = Post.create!(
-      published_at: 1.day.ago,
       post_translations_attributes: {
         "0" => { locale: "en", title: "Hello", description: "Summary", content: "# Body" },
         "1" => { locale: "es", title: "Hola", description: "Resumen", content: "# Contenido" }
@@ -26,45 +25,67 @@ class PostTest < ActiveSupport::TestCase
     )
 
     assert_equal %w[en es], post.available_locales.sort
-    assert_equal "Resumen", post.translation_for(:es).description
-    assert_equal "# Body", post.translation_for(:en).content
+    assert_equal "Resumen", post.post_translation_for(:es).description
+    assert_equal "# Body", post.post_translation_for(:en).content
   end
 
-  test "falls back to the default translation for display" do
+  test "falls back to the default post translation" do
     post = build_post
 
-    assert_equal "Hello", post.display_translation(:es).title
+    assert_equal "Hello", post.post_translation_for(:es).title
   end
 
-  test "published includes explicitly published posts without a date" do
+  test "publicly visible includes posts published in the requested locale" do
     published = create_post("Published", published: true)
 
-    assert_equal [ published ], Post.published.to_a
+    assert_equal [ published ], Post.publicly_visible_in(:en).to_a
   end
 
-  test "published excludes drafts and includes posts regardless of date" do
+  test "publicly visible excludes drafts and includes posts regardless of date" do
     published = create_post("Published", published: true, published_at: 1.day.ago)
     future_dated = create_post("Future dated", published: true, published_at: 1.day.from_now)
     create_post("Draft", published: false)
 
-    assert_equal [ published, future_dated ], Post.published.order(:id).to_a
+    assert_equal [ published, future_dated ], Post.publicly_visible_in(:en).reorder(:id).to_a
   end
 
-  test "a published post remains visible when its date changes" do
+  test "a published translation remains visible when its date changes" do
     post = create_post("Published", published: true)
 
-    post.update!(published_at: 1.day.ago)
+    post.post_translation_for(:en).update!(published_at: 1.day.ago)
 
-    assert_includes Post.published, post
+    assert_includes Post.publicly_visible_in(:en), post
+  end
+
+  test "draft translations may be incomplete" do
+    post = Post.new(post_translations_attributes: {
+      "0" => { locale: "en", content: "Work in progress" }
+    })
+
+    assert post.valid?
+  end
+
+  test "published translations require title and content" do
+    post = Post.new(post_translations_attributes: {
+      "0" => { locale: "en", published: true }
+    })
+
+    assert_not post.valid?
+    assert post.post_translation_for(:en).errors.added?(:title, :blank)
+    assert post.post_translation_for(:en).errors.added?(:content, :blank)
+  end
+
+  test "publishing assigns a publication date" do
+    post = create_post("Published", published: true)
+
+    assert_in_delta Time.current, post.post_translation_for(:en).published_at, 1.second
   end
 
   private
     def build_post(title = "Hello", published: false, published_at: nil)
       Post.new(
-        published: published,
-        published_at: published_at,
         post_translations_attributes: {
-          "0" => { locale: "en", title: title, description: "A short preview", content: "# Content" }
+          "0" => { locale: "en", title: title, description: "A short preview", content: "# Content", published: published, published_at: published_at }
         }
       )
     end

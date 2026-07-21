@@ -3,7 +3,9 @@
 <section class="mx-auto w-full max-w-3xl px-6 py-12 md:py-20">
   <% if @posts.any? %>
     <div class="divide-y divide-white/10">
-      <%= render partial: "post_card", collection: @posts, as: :post %>
+      <% @posts.each do |post| %>
+        <%= render "post_card", post: post, post_translation: post.post_translation_for(I18n.locale) %>
+      <% end %>
     </div>
 
     <% if @pagy.pages > 1 %>

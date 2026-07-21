@@ -1,7 +1,8 @@
-<% content_for :title, "#{@translation.title} | #{t("layouts.application.title")}" %>
+<% post_translation = @post.post_translation_for(I18n.locale) %>
+<% content_for :title, "#{post_translation.title} | #{t("layouts.application.title")}" %>
 
 <div class="mx-auto w-full max-w-3xl px-6 py-12 md:py-20">
-  <%= render "post", post: @post, translation: @translation %>
+  <%= render "post_translation", post_translation: post_translation %>
 
   <footer class="mt-16 border-t border-white/10 pt-8">
     <%= link_to t("posts.back"), posts_path, class: "inline-flex items-center gap-2 text-sm font-semibold text-brand hover:underline" %>

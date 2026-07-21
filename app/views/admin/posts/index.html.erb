@@ -10,30 +10,32 @@
   <% if @posts.any? %>
     <div class="space-y-4">
       <% @posts.each do |post| %>
-        <% primary_translation = post.display_translation(I18n.default_locale) %>
+        <% post_translation = post.post_translation_for(I18n.default_locale) %>
         <div class="rounded-lg border border-white/10 bg-white/5 p-5">
           <div class="flex items-start justify-between gap-4">
             <div class="min-w-0 flex-1">
               <div class="flex items-center gap-2">
                 <h2 class="font-semibold text-lg text-white truncate">
-                  <%= primary_translation&.title || "Untitled" %>
+                  <%= post_translation&.title || "Untitled" %>
                 </h2>
-                <span class="text-[10px] font-semibold tracking-wide text-white/50 shrink-0">
-                  <%= post.available_locales.map(&:upcase).join(" · ") %>
-                </span>
               </div>
-              <p class="text-sm text-white/60 mt-1 truncate"><%= primary_translation&.description %></p>
-              <div class="flex items-center gap-3 mt-3 text-xs text-white/40">
-                <span>
-                  <% if !post.published? %>
-                    <%= t("admin.posts.draft") %>
-                  <% elsif post.published_at %>
-                    <%= t("admin.posts.published_on", date: l(post.published_at, format: :short)) %>
-                  <% else %>
-                    <%= t("admin.posts.published_immediately") %>
-                  <% end %>
-                </span>
-                <span>&middot;</span>
+              <p class="text-sm text-white/60 mt-1 truncate"><%= post_translation&.description %></p>
+              <div class="mt-3 flex flex-wrap items-center gap-2 text-xs">
+                <% post.post_translations.sort_by(&:locale).each do |translation| %>
+                  <span
+                    class="
+                      rounded-full px-2 py-1 <%= translation.published? ? 'bg-brand/15 text-brand' : 'bg-white/10 text-white/50' %>
+                    "
+                  >
+                    <%= translation.locale.upcase %>
+                    <%= if translation.published?
+                      t("admin.posts.published_status")
+                    else
+                      t("admin.posts.draft")
+                    end %>
+                  </span>
+                <% end %>
+                <span class="text-white/40">&middot;</span>
                 <span>Created
                   <%= l post.created_at, format: :short %></span>
               </div>

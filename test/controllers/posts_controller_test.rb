@@ -11,9 +11,8 @@ class PostsControllerTest < ActionDispatch::IntegrationTest
     get posts_path(locale: :es)
 
     assert_response :success
-    assert_select "h1", text: I18n.t("posts.heading", locale: :es), count: 1
-    assert_select "h2", text: published.translation_for(:es).title
-    assert_select "h2", text: immediate.translation_for(:es).title
+    assert_select "h2", text: published.post_translation_for(:es).title
+    assert_select "h2", text: immediate.post_translation_for(:es).title
     assert_select "h2", text: "Future dated ES"
     assert_select "h2", text: "Draft", count: 0
     assert_select "h2", text: "English only", count: 0
@@ -55,15 +54,34 @@ class PostsControllerTest < ActionDispatch::IntegrationTest
     assert_response :not_found
   end
 
+  test "publication is independent per locale" do
+    post = create_post("English ready", published: true, spanish_published: false)
+
+    get post_path(post, locale: :en)
+    assert_response :success
+
+    get post_path(post, locale: :es)
+    assert_response :not_found
+  end
+
+  test "locale switch falls back to the target feed when its translation is a draft" do
+    post = create_post("English ready", published: true, spanish_published: false)
+
+    get post_path(post, locale: :en)
+
+    assert_select "a[href=?]", posts_path(locale: :es)
+    assert_select "a[href=?]", post_path(post, locale: :es), count: 0
+  end
+
   private
-    def create_post(title, published: false, published_at: nil, spanish: true)
+    def create_post(title, published: false, published_at: nil, spanish: true, spanish_published: published)
       translations = {
-        "0" => { locale: "en", title: title, description: "English description", content: "English body" }
+        "0" => { locale: "en", title: title, description: "English description", content: "English body", published: published, published_at: published_at }
       }
       if spanish
-        translations["1"] = { locale: "es", title: "#{title} ES", description: "Descripción", content: "Contenido" }
+        translations["1"] = { locale: "es", title: "#{title} ES", description: "Descripción", content: "Contenido", published: spanish_published, published_at: published_at }
       end
 
-      Post.create!(published: published, published_at: published_at, post_translations_attributes: translations)
+      Post.create!(post_translations_attributes: translations)
     end
 end

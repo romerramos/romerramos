@@ -244,8 +244,8 @@ es:
 
   footer:
     built_in_madrid: "%{year} Web creada en Madrid"
-    built_with_love_html: |
-      Yo fui creado con <i class="fa-regular fa-heart text-brand/70"></i> en Venezuela
+    built_with_love_prefix: "Yo fui creado con"
+    built_with_love_suffix: "en Venezuela"
 
   about:
     heading: "Desarrollo cosas en internet."
@@ -274,7 +274,8 @@ es:
       Si has llegado hasta aquí, vamos a tomarnos un <span class="text-brand font-medium">café</span>, ¡invito yo! (Puede que conozca una... o 10 cafeterías buenas).
 
   art:
-    heading_html: 'Lo que me llama <span class="text-brand">la atención</span>'
+    heading_before: "Lo que me llama"
+    heading_emphasis: "la atención"
     heading: "Lo que me llama la atención"
     intro: "Mis fotos y dibujos."
     empty: "Todavía no hay nada por aquí. Vuelve pronto."
@@ -319,19 +320,21 @@ es:
       updated: "Foto actualizada."
       destroyed: "Foto eliminada."
     posts:
+      back: "Volver a Jot Spot"
       new: "Nueva publicación"
       edit: "Editar publicación"
       created: "Publicación creada correctamente."
       updated: "Publicación actualizada correctamente."
       destroyed: "Publicación eliminada correctamente."
-      published: "Publicada"
-      published_hint: "Desmarca esta opción para mantener la publicación como borrador, independientemente de su fecha."
+      published: "Publicar %{language}"
+      published_hint: "Solo se publicará este idioma. El título y el contenido son obligatorios."
       errors:
         one: "1 error impidió guardar esta publicación:"
         other: "%{count} errores impidieron guardar esta publicación:"
       published_at: "Fecha de publicación"
-      published_at_hint: "Fecha opcional que se muestra en la publicación. No controla su visibilidad."
+      published_at_hint: "Fecha opcional que se muestra para este idioma. No controla su visibilidad."
       draft: "Borrador"
+      published_status: "Publicada"
       published_on: "Publicada %{date}"
       published_immediately: "Publicada"
       title: "Título (%{language})"

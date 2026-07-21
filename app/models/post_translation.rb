@@ -1,7 +1,18 @@
 class PostTranslation < ApplicationRecord
   belongs_to :post, inverse_of: :post_translations
 
+  attribute :published, :boolean, default: false
+
+  scope :published, -> { where(published: true) }
+
   validates :locale, presence: true, inclusion: { in: -> { I18n.available_locales.map(&:to_s) } }
-  validates :title, presence: true
+  validates :title, :content, presence: true, if: :published?
   validates :locale, uniqueness: { scope: :post_id, message: "translation already exists for this locale" }
+
+  before_validation :set_published_at, if: :published?
+
+  private
+    def set_published_at
+      self.published_at ||= Time.current
+    end
 end

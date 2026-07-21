@@ -1,8 +1,10 @@
 <% content_for :title, "#{t("admin.photos.edit")} — Admin" %>
 
 <div class="w-full max-w-xl">
-  <%= link_to "← #{t("admin.photos.back")}", admin_photos_path,
-    class: "text-sm text-white/60 hover:text-brand" %>
+  <%= link_to admin_photos_path, class: "inline-flex items-center gap-2 text-sm text-white/60 hover:text-brand" do %>
+    <%= lucide_icon "arrow-left", class: "size-4", "aria-hidden": "true" %>
+    <%= t("admin.photos.back") %>
+  <% end %>
 
   <h1 class="text-3xl md:text-4xl font-bold mt-2 mb-6"><%= t("admin.photos.edit") %></h1>
 
