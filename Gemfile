@@ -26,6 +26,7 @@ gem "bcrypt", "~> 3.1.7"
 gem "marksmith"
 # Markdown parser for marksmith
 gem "commonmarker"
+gem "pagy", "~> 43.6"
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem "tzinfo-data", platforms: %i[ windows jruby ]

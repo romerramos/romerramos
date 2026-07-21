@@ -51,7 +51,7 @@ module Admin
 
       def post_params
         params.require(:post).permit(
-          :published_at,
+          :published, :published_at,
           post_translations_attributes: [ :id, :locale, :title, :description, :content, :_destroy ]
         )
       end

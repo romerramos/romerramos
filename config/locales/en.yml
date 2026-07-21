@@ -24,7 +24,8 @@ en:
   about:
     heading: "I build things on the internet."
     full_name: "Romer Ramos"
-    subtitle_html: 'I <span class="text-brand font-medium">build</span> things on
+    subtitle_html:
+      'I <span class="text-brand font-medium">build</span> things on
       the internet.'
     intro_html: |
       It started in Venezuela with some character-building first jobs. Embedded software, Windows CE, banking mergers, Blackberry apps. If you've never debugged Java on a Blackberry, congratulations, you lived a better life than me.
@@ -50,13 +51,22 @@ en:
   art:
     heading_html: 'What catches <span class="text-brand">my eye</span>'
     heading: "What catches my eye"
-    intro: "Photos, drawings, and things worth showing."
+    intro: "My photos and drawings."
     empty: "Nothing here yet. Check back soon."
     view_photo: "View image"
     photo_alt: "Image by Romer Ramos"
     close: "Close"
     previous: "Previous image"
     next: "Next image"
+
+  posts:
+    publication: "Notes by Romer Ramos"
+    heading: "Jot Spot"
+    intro: "Thoughts on building software, making things, and whatever else catches my attention."
+    read: "Read post"
+    back: "Back to Jot Spot"
+    empty: "Nothing published yet. Check back soon."
+    pagination: "Posts pagination"
 
   admin:
     photos:
@@ -89,11 +99,16 @@ en:
       created: "Post created successfully."
       updated: "Post updated successfully."
       destroyed: "Post deleted successfully."
+      published: "Published"
+      published_hint: "Uncheck to keep this post as a draft, regardless of its publication date."
       errors:
         one: "1 error prohibited this post from being saved:"
         other: "%{count} errors prohibited this post from being saved:"
       published_at: "Published at"
-      published_at_hint: "Leave blank for a draft, or set a date in the past or future."
+      published_at_hint: "Optional date shown on the post. It does not control visibility."
+      draft: "Draft"
+      published_on: "Published %{date}"
+      published_immediately: "Published"
       title: "Title (%{language})"
       title_placeholder: "Post title"
       description: "Description (%{language})"

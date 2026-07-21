@@ -36,17 +36,32 @@ class PostTest < ActiveSupport::TestCase
     assert_equal "Hello", post.display_translation(:es).title
   end
 
-  test "published excludes drafts and scheduled posts" do
-    published = create_post("Published", published_at: 1.day.ago)
-    create_post("Draft")
-    create_post("Scheduled", published_at: 1.day.from_now)
+  test "published includes explicitly published posts without a date" do
+    published = create_post("Published", published: true)
 
     assert_equal [ published ], Post.published.to_a
   end
 
+  test "published excludes drafts and includes posts regardless of date" do
+    published = create_post("Published", published: true, published_at: 1.day.ago)
+    future_dated = create_post("Future dated", published: true, published_at: 1.day.from_now)
+    create_post("Draft", published: false)
+
+    assert_equal [ published, future_dated ], Post.published.order(:id).to_a
+  end
+
+  test "a published post remains visible when its date changes" do
+    post = create_post("Published", published: true)
+
+    post.update!(published_at: 1.day.ago)
+
+    assert_includes Post.published, post
+  end
+
   private
-    def build_post(title = "Hello", published_at: nil)
+    def build_post(title = "Hello", published: false, published_at: nil)
       Post.new(
+        published: published,
         published_at: published_at,
         post_translations_attributes: {
           "0" => { locale: "en", title: title, description: "A short preview", content: "# Content" }
@@ -54,7 +69,7 @@ class PostTest < ActiveSupport::TestCase
       )
     end
 
-    def create_post(title, published_at: nil)
-      build_post(title, published_at: published_at).tap(&:save!)
+    def create_post(title, published: false, published_at: nil)
+      build_post(title, published: published, published_at: published_at).tap(&:save!)
     end
 end

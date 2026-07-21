@@ -32,9 +32,9 @@
       </li>
       <li>
         <%= link_to t("nav.jot_spot"),
-        jot_spot_path,
+        posts_path,
         class:
-          "hover:text-brand #{current_page?(jot_spot_path) ? "text-brand font-bold underline" : ""}" %>
+          "hover:text-brand #{controller_name == "posts" && !controller_path.start_with?("admin/") ? "text-brand font-bold underline" : ""}" %>
       </li>
     </ol>
   </nav>

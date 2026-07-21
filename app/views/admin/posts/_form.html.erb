@@ -11,6 +11,14 @@
   <% end %>
 
   <div class="my-5">
+    <label class="flex items-center gap-2 text-white/80">
+      <%= form.check_box :published, class: "h-4 w-4 rounded border-white/20 bg-white/5 text-brand focus:ring-brand" %>
+      <%= t("admin.posts.published") %>
+    </label>
+    <p class="text-xs text-white/40 mt-1"><%= t("admin.posts.published_hint") %></p>
+  </div>
+
+  <div class="my-5">
     <%= form.label :published_at, t("admin.posts.published_at"), class: "block text-sm font-medium text-white/80 mb-1" %>
     <%= form.datetime_local_field :published_at, class: "block rounded-md border border-white/20 bg-white/5 focus:border-brand focus:ring-1 focus:ring-brand px-3 py-2.5 mt-1 w-full text-white" %>
     <p class="text-xs text-white/40 mt-1"><%= t("admin.posts.published_at_hint") %></p>

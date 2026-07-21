@@ -276,13 +276,22 @@ es:
   art:
     heading_html: 'Lo que me llama <span class="text-brand">la atención</span>'
     heading: "Lo que me llama la atención"
-    intro: "Fotos, dibujos y cosas que merece la pena mostrar."
+    intro: "Mis fotos y dibujos."
     empty: "Todavía no hay nada por aquí. Vuelve pronto."
     view_photo: "Ver imagen"
     photo_alt: "Imagen de Romer Ramos"
     close: "Cerrar"
     previous: "Imagen anterior"
     next: "Imagen siguiente"
+
+  posts:
+    publication: "Notas de Romer Ramos"
+    heading: "Jot Spot"
+    intro: "Ideas sobre desarrollo de software, crear cosas y cualquier otra cosa que me llame la atención."
+    read: "Leer publicación"
+    back: "Volver a Jot Spot"
+    empty: "Todavía no hay publicaciones. Vuelve pronto."
+    pagination: "Paginación de publicaciones"
 
   admin:
     photos:
@@ -315,11 +324,16 @@ es:
       created: "Publicación creada correctamente."
       updated: "Publicación actualizada correctamente."
       destroyed: "Publicación eliminada correctamente."
+      published: "Publicada"
+      published_hint: "Desmarca esta opción para mantener la publicación como borrador, independientemente de su fecha."
       errors:
         one: "1 error impidió guardar esta publicación:"
         other: "%{count} errores impidieron guardar esta publicación:"
       published_at: "Fecha de publicación"
-      published_at_hint: "Déjalo vacío para guardar un borrador, o indica una fecha pasada o futura."
+      published_at_hint: "Fecha opcional que se muestra en la publicación. No controla su visibilidad."
+      draft: "Borrador"
+      published_on: "Publicada %{date}"
+      published_immediately: "Publicada"
       title: "Título (%{language})"
       title_placeholder: "Título de la publicación"
       description: "Descripción (%{language})"

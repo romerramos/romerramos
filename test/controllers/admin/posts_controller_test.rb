@@ -44,6 +44,7 @@ class Admin::PostsControllerTest < ActionDispatch::IntegrationTest
     assert_difference([ "Post.count", "PostTranslation.count" ], 1) do
       post admin_posts_url, params: {
         post: {
+          published: "1",
           published_at: published_at,
           post_translations_attributes: {
             "0" => {
@@ -59,8 +60,27 @@ class Admin::PostsControllerTest < ActionDispatch::IntegrationTest
 
     created = Post.order(:id).last
     assert_redirected_to admin_post_url(created)
+    assert created.published?
     assert_equal published_at, created.published_at
     assert_equal "# Some content", created.translation_for(:en).content
+  end
+
+  test "create interprets publication dates in Madrid time" do
+    sign_in_as(@user)
+
+    post admin_posts_url, params: {
+      post: {
+        published: "1",
+        published_at: "2026-07-20T18:00",
+        post_translations_attributes: {
+          "0" => { locale: "en", title: "Madrid Post" }
+        }
+      }
+    }
+
+    created = Post.order(:id).last
+    assert_equal Time.zone.local(2026, 7, 20, 18), created.published_at
+    assert_equal Time.utc(2026, 7, 20, 16), created.published_at.utc
   end
 
   test "create saves multiple translations together" do
@@ -107,6 +127,7 @@ class Admin::PostsControllerTest < ActionDispatch::IntegrationTest
 
     patch admin_post_url(@post), params: {
       post: {
+        published: "0",
         published_at: published_at,
         post_translations_attributes: {
           "0" => { id: translation.id, locale: "en", title: "Updated", description: "Updated preview", content: "Updated body" }
@@ -115,7 +136,8 @@ class Admin::PostsControllerTest < ActionDispatch::IntegrationTest
     }
 
     assert_redirected_to admin_post_url(@post)
-    assert_equal published_at, @post.reload.published_at
+    assert_not @post.reload.published?
+    assert_equal published_at, @post.published_at
     assert_equal "Updated body", @post.translation_for(:en).content
   end
 
@@ -148,6 +170,7 @@ class Admin::PostsControllerTest < ActionDispatch::IntegrationTest
   private
     def create_post
       Post.create!(
+        published: true,
         published_at: 1.day.ago,
         post_translations_attributes: {
           "0" => { locale: "en", title: "First Post", description: "A preview", content: "# Hello" }

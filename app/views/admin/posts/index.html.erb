@@ -25,11 +25,12 @@
               <p class="text-sm text-white/60 mt-1 truncate"><%= primary_translation&.description %></p>
               <div class="flex items-center gap-3 mt-3 text-xs text-white/40">
                 <span>
-                  <% if post.published_at %>
-                    Published
-                    <%= l post.published_at, format: :short %>
+                  <% if !post.published? %>
+                    <%= t("admin.posts.draft") %>
+                  <% elsif post.published_at %>
+                    <%= t("admin.posts.published_on", date: l(post.published_at, format: :short)) %>
                   <% else %>
-                    Draft
+                    <%= t("admin.posts.published_immediately") %>
                   <% end %>
                 </span>
                 <span>&middot;</span>

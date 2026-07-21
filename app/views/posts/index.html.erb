@@ -1,0 +1,25 @@
+<% content_for :title, "#{t("posts.heading")} | #{t("layouts.application.title")}" %>
+
+<section class="mx-auto w-full max-w-3xl px-6 py-12 md:py-20">
+  <% if @posts.any? %>
+    <div class="divide-y divide-white/10">
+      <%= render partial: "post_card", collection: @posts, as: :post %>
+    </div>
+
+    <% if @pagy.pages > 1 %>
+      <nav
+        aria-label="<%= t("posts.pagination") %>"
+        class="
+          mt-12 flex justify-center text-sm [&_a]:mx-1 [&_a]:inline-flex [&_a]:min-h-9
+          [&_a]:min-w-9 [&_a]:items-center [&_a]:justify-center [&_a]:rounded-md
+          [&_a]:px-3 [&_a]:text-white/70 [&_a]:transition-colors hover:[&_a]:bg-white/10
+          hover:[&_a]:text-brand [&_[aria-current]]:bg-brand [&_[aria-current]]:text-navy
+        "
+      >
+        <%== @pagy.series_nav %>
+      </nav>
+    <% end %>
+  <% else %>
+    <p class="py-16 text-center text-white/50"><%= t("posts.empty") %></p>
+  <% end %>
+</section>

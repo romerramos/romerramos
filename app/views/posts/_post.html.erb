@@ -1,47 +1,37 @@
 <% translation = local_assigns[:translation] %>
 <% if translation %>
   <div class="w-full">
-    <div
-      class="
-        flex flex-col md:flex-row md:items-baseline md:justify-between mb-1
-      "
-    >
-      <h1 class="font-bold text-2xl md:text-3xl lg:text-4xl text-brand"><%= translation.title %></h1>
-      <span
-        class="
-          text-white/40 text-xs md:text-sm mt-1 md:mt-0 md:ml-4 shrink-0 self-end
-          md:self-auto
-        "
-      >
+    <header class="mb-10">
+      <time datetime="<%= (post.published_at || post.created_at).iso8601 %>" class="text-xs font-medium uppercase tracking-wider text-white/40">
         <%= smart_date(post.published_at || post.created_at) %>
-      </span>
-    </div>
+      </time>
+      <h1 class="mt-4 text-4xl font-bold leading-tight tracking-tight text-white md:text-6xl"><%= translation.title %></h1>
 
-    <% if local_assigns[:admin] %>
-      <div class="flex items-center gap-3 mb-4">
-        <%= link_to "Edit",
-        edit_admin_post_path(post),
-        class:
-          "rounded-md px-4 py-2 bg-white/10 hover:bg-white/20 text-white text-sm font-medium transition-colors cursor-pointer" %>
-        <%= button_to "Delete",
-        admin_post_path(post),
-        method: :delete,
-        class:
-          "rounded-md px-4 py-2 bg-red-500/20 hover:bg-red-500/30 text-red-400 text-sm font-medium transition-colors cursor-pointer",
-        data: {
-          turbo_confirm: "Are you sure you want to delete this post?",
-        } %>
-      </div>
-    <% end %>
+      <% if local_assigns[:admin] %>
+        <div class="mt-6 flex items-center gap-3">
+          <%= link_to "Edit",
+          edit_admin_post_path(post),
+          class:
+            "rounded-md px-4 py-2 bg-white/10 hover:bg-white/20 text-white text-sm font-medium transition-colors cursor-pointer" %>
+          <%= button_to "Delete",
+          admin_post_path(post),
+          method: :delete,
+          class:
+            "rounded-md px-4 py-2 bg-red-500/20 hover:bg-red-500/30 text-red-400 text-sm font-medium transition-colors cursor-pointer",
+          data: {
+            turbo_confirm: "Are you sure you want to delete this post?",
+          } %>
+        </div>
+      <% end %>
 
-    <% if translation.description.present? %>
-      <p class="italic text-white/60 text-base md:text-lg mb-6">TL;DR:
-        <%= translation.description %></p>
-    <% end %>
+      <% if translation.description.present? %>
+        <p class="mt-5 text-lg leading-relaxed text-white/60 md:text-xl"><%= translation.description %></p>
+      <% end %>
+    </header>
 
     <% if translation.content.present? %>
-      <div class="pt-6">
-        <article class="leading-relaxed prose prose-invert">
+      <div>
+        <article class="prose prose-invert max-w-none leading-relaxed prose-headings:text-white prose-a:text-brand prose-strong:text-white">
           <%== sanitize(
             marksmithed(translation.content),
             tags:
