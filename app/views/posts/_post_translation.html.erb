@@ -1,0 +1,29 @@
+<div class="w-full">
+  <header class="mb-10">
+    <time datetime="<%= (post_translation.published_at || post_translation.created_at).iso8601 %>" class="text-xs font-medium uppercase tracking-wider text-white/40">
+      <%= smart_date(post_translation.published_at || post_translation.created_at) %>
+    </time>
+    <h1 class="mt-4 text-4xl font-bold leading-tight tracking-tight text-white md:text-6xl"><%= post_translation.title %></h1>
+
+    <% if post_translation.description.present? %>
+      <p class="mt-5 text-lg leading-relaxed text-white/60 md:text-xl"><%= post_translation.description %></p>
+    <% end %>
+  </header>
+
+  <% if post_translation.content.present? %>
+    <div>
+      <article class="prose prose-invert max-w-none leading-relaxed prose-headings:text-white prose-a:text-brand prose-strong:text-white">
+        <%== sanitize(
+          marksmithed(post_translation.content),
+          tags:
+            %w[table th tr td span] +
+              ActionView::Helpers::SanitizeHelper
+                .sanitizer_vendor
+                .safe_list_sanitizer
+                .allowed_tags
+                .to_a,
+        ) %>
+      </article>
+    </div>
+  <% end %>
+</div>

@@ -18,13 +18,14 @@ en:
 
   footer:
     built_in_madrid: "%{year} Web built in Madrid"
-    built_with_love_html: |
-      I was built with <i class="fa-regular fa-heart text-brand/70"></i> in Venezuela
+    built_with_love_prefix: "I was built with"
+    built_with_love_suffix: "in Venezuela"
 
   about:
     heading: "I build things on the internet."
     full_name: "Romer Ramos"
-    subtitle_html: 'I <span class="text-brand font-medium">build</span> things on
+    subtitle_html:
+      'I <span class="text-brand font-medium">build</span> things on
       the internet.'
     intro_html: |
       It started in Venezuela with some character-building first jobs. Embedded software, Windows CE, banking mergers, Blackberry apps. If you've never debugged Java on a Blackberry, congratulations, you lived a better life than me.
@@ -48,9 +49,10 @@ en:
       If you got this far let's get a <span class="text-brand font-medium">specialty coffee</span>, it's on me! (I might know one or 10 amazing places)
 
   art:
-    heading_html: 'What catches <span class="text-brand">my eye</span>'
+    heading_before: "What catches"
+    heading_emphasis: "my eye"
     heading: "What catches my eye"
-    intro: "Photos, drawings, and things worth showing."
+    intro: "My photos and drawings."
     empty: "Nothing here yet. Check back soon."
     view_photo: "View image"
     photo_alt: "Image by Romer Ramos"
@@ -58,10 +60,16 @@ en:
     previous: "Previous image"
     next: "Next image"
 
+  posts:
+    publication: "Notes by Romer Ramos"
+    heading: "Jot Spot"
+    intro: "Thoughts on building software, making things, and whatever else catches my attention."
+    read: "Read post"
+    back: "Back to Jot Spot"
+    empty: "Nothing published yet. Check back soon."
+    pagination: "Posts pagination"
+
   admin:
-    dashboard:
-      manage_photos: "Manage Photos"
-      manage_photos_desc: "Upload, edit and reorder your gallery."
     photos:
       title: "Photos"
       subtitle: "Manage your gallery"
@@ -86,6 +94,32 @@ en:
       created: "Photos added."
       updated: "Photo updated."
       destroyed: "Photo deleted."
+    posts:
+      back: "Back to Jot Spot"
+      new: "New Post"
+      edit: "Edit Post"
+      created: "Post created successfully."
+      updated: "Post updated successfully."
+      destroyed: "Post deleted successfully."
+      published: "Publish %{language}"
+      published_hint: "Only this language will become public. A title and content are required."
+      errors:
+        one: "1 error prohibited this post from being saved:"
+        other: "%{count} errors prohibited this post from being saved:"
+      published_at: "Published at"
+      published_at_hint: "Optional date shown for this language. It does not control visibility."
+      draft: "Draft"
+      published_status: "Published"
+      published_on: "Published %{date}"
+      published_immediately: "Published"
+      title: "Title (%{language})"
+      title_placeholder: "Post title"
+      description: "Description (%{language})"
+      description_placeholder: "A short preview of the content"
+      description_hint: "Keep it concise; this is the preview shown in listings."
+      content: "Content (%{language})"
+      content_placeholder: "Write your Markdown content here..."
+      cancel: "Cancel"
 
   activerecord:
     errors:

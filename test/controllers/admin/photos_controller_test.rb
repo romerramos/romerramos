@@ -11,10 +11,10 @@ class Admin::PhotosControllerTest < ActionDispatch::IntegrationTest
     assert_redirected_to login_path
   end
 
-  test "admin root points to photo management" do
+  test "admin root points to post management" do
     get "/admin"
 
-    assert_redirected_to admin_photos_path
+    assert_redirected_to admin_posts_path
   end
 
   test "index lists photos when signed in" do

@@ -6,7 +6,8 @@
       target="_blank"
       rel="noopener noreferrer"
     >
-      <i class="fa-brands fa-github text-base"></i><%= t("home.github") %>
+      <%= lucide_icon "github", class: "size-4", "aria-hidden": "true" %>
+      <%= t("home.github") %>
     </a>
   </li>
   <li>
@@ -16,14 +17,16 @@
       target="_blank"
       rel="noopener noreferrer"
     >
-      <i class="fa-brands fa-linkedin text-base"></i><%= t("home.linkedin") %>
+      <%= lucide_icon "linkedin", class: "size-4", "aria-hidden": "true" %>
+      <%= t("home.linkedin") %>
     </a>
   </li>
   <li>
     <%= link_to(I18n.locale == :es ? "/cv_spanish.pdf" : "/cv_english.pdf",
         target: "_blank",
         class: "flex gap-1 items-center hover:text-brand") do %>
-      <i class="fa-solid fa-file-pdf text-base"></i><%= t("home.resume") %>
+      <%= lucide_icon "file-text", class: "size-4", "aria-hidden": "true" %>
+      <%= t("home.resume") %>
     <% end %>
   </li>
   <li>
@@ -31,12 +34,14 @@
       class="flex gap-1 items-center hover:text-brand"
       href="mailto:romerramos@gmail.com"
     >
-      <i class="fa-solid fa-at text-base"></i><%= t("home.email") %>
+      <%= lucide_icon "at-sign", class: "size-4", "aria-hidden": "true" %>
+      <%= t("home.email") %>
     </a>
   </li>
   <li>
     <a class="flex gap-1 items-center hover:text-brand" href="tel:+34722781489">
-      <i class="fa-solid fa-phone text-base"></i><%= t("home.phone") %>
+      <%= lucide_icon "phone", class: "size-4", "aria-hidden": "true" %>
+      <%= t("home.phone") %>
     </a>
   </li>
 </ul>

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2026_07_20_141000) do
+ActiveRecord::Schema[8.1].define(version: 2026_07_21_110000) do
   create_table "active_storage_attachments", force: :cascade do |t|
     t.bigint "blob_id", null: false
     t.datetime "created_at", null: false
@@ -57,7 +57,9 @@ ActiveRecord::Schema[8.1].define(version: 2026_07_20_141000) do
     t.string "description"
     t.string "locale", null: false
     t.integer "post_id", null: false
-    t.string "title", null: false
+    t.boolean "published"
+    t.datetime "published_at"
+    t.string "title"
     t.datetime "updated_at", null: false
     t.index ["post_id", "locale"], name: "index_post_translations_on_post_id_and_locale", unique: true
     t.index ["post_id"], name: "index_post_translations_on_post_id"
@@ -65,6 +67,7 @@ ActiveRecord::Schema[8.1].define(version: 2026_07_20_141000) do
 
   create_table "posts", force: :cascade do |t|
     t.datetime "created_at", null: false
+    t.boolean "published", default: false, null: false
     t.datetime "published_at"
     t.datetime "updated_at", null: false
   end

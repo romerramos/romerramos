@@ -1,0 +1,12 @@
+<article class="group py-8 first:pt-0 md:py-10">
+  <time datetime="<%= (post_translation.published_at || post_translation.created_at).iso8601 %>" class="text-xs font-medium uppercase tracking-wider text-white/40">
+    <%= smart_date(post_translation.published_at || post_translation.created_at) %>
+  </time>
+  <h2 class="mt-3 text-2xl font-bold leading-tight tracking-tight md:text-3xl">
+    <%= link_to post_translation.title, post_path(id: post), class: "text-white transition-colors group-hover:text-brand" %>
+  </h2>
+  <% if post_translation.description.present? %>
+    <p class="mt-3 text-base leading-relaxed text-white/60 md:text-lg"><%= post_translation.description %></p>
+  <% end %>
+  <%= link_to t("posts.read"), post_path(id: post), class: "mt-5 inline-flex items-center gap-2 text-sm font-semibold text-brand hover:underline" %>
+</article>

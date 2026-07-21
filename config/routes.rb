@@ -17,7 +17,8 @@ Rails.application.routes.draw do
   get "service-worker" => "rails/pwa#service_worker", as: :pwa_service_worker
 
   namespace :admin do
-    get "/", to: redirect("/admin/photos")
+    get "/", to: redirect("/admin/posts")
+    resources :posts
     resources :photos, except: [ :show ]
   end
 
@@ -25,6 +26,7 @@ Rails.application.routes.draw do
     # Defines the root path route ("/")
     root "home#index"
     resource :about, only: [ :show ], controller: "about"
+    resources :posts, only: [ :index, :show ]
     get "art", to: "art#index", as: :art
   end
 

@@ -6,7 +6,8 @@
 <div class="container mx-auto px-6 md:px-0 my-10 md:my-20">
   <div class="mb-8 md:mb-12">
     <h1 class="text-4xl md:text-6xl font-bold mb-4">
-      <%= t("art.heading_html").html_safe %>
+      <%= t("art.heading_before") %>
+      <span class="text-brand"><%= t("art.heading_emphasis") %></span>
     </h1>
     <p class="text-xl md:text-2xl font-light text-white/70 max-w-2xl">
       <%= t("art.intro") %>
@@ -16,7 +17,7 @@
   <% if @photos.any? %>
     <div
       data-controller="lightbox"
-      data-lightbox-options-value='<%= { selector: ".art-photo", speed: 200, download: false, counter: false }.to_json %>'
+      data-lightbox-options-value="<%= { selector: ".art-photo", speed: 200, download: false, counter: false }.to_json %>"
     >
       <div class="columns-1 sm:columns-2 lg:columns-3 gap-4">
         <% @photos.each do |photo| %>
@@ -25,10 +26,11 @@
             data: { sub_html: "##{dom_id(photo, :caption)}" },
             aria: { label: photo.display_title.presence || t("art.view_photo") } do %>
             <%= image_tag photo.image.variant(:thumb),
-                  loading: "lazy",
-                  alt: photo.display_title.presence || t("art.photo_alt"),
-                  style: "aspect-ratio: #{photo_aspect_ratio(photo)}",
-                  class: "w-full rounded-lg object-cover bg-white/5 transition duration-200 group-hover:opacity-90 group-hover:ring-2 group-hover:ring-brand" %>
+            loading: "lazy",
+            alt: photo.display_title.presence || t("art.photo_alt"),
+            style: "aspect-ratio: #{photo_aspect_ratio(photo)}",
+            class:
+              "w-full rounded-lg object-cover bg-white/5 transition duration-200 group-hover:opacity-90 group-hover:ring-2 group-hover:ring-brand" %>
           <% end %>
 
           <div id="<%= dom_id(photo, :caption) %>" class="hidden">

@@ -1,0 +1,70 @@
+<%= form_with model: [:admin, post], class: "contents" do |form| %>
+  <% if post.errors.any? %>
+    <div class="rounded-lg border border-red-500/30 bg-red-500/10 p-4 mb-6">
+      <p class="text-red-400 font-medium mb-2"><%= t("admin.posts.errors", count: post.errors.count) %></p>
+      <ul class="list-disc list-inside text-red-400/80 text-sm space-y-1">
+        <% post.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="my-5" data-controller="tabs" data-tabs-active-class="border-brand text-brand" data-tabs-inactive-class="border-transparent text-white/60">
+    <div class="flex gap-1 border-b border-white/10 mb-6">
+      <% I18n.available_locales.each_with_index do |locale, index| %>
+        <button type="button"
+          data-tabs-target="tab"
+          data-action="tabs#select"
+          data-tabs-index-param="<%= index %>"
+          class="<%= index == 0 ? 'border-brand text-brand' : 'border-transparent text-white/60' %> px-4 py-2 -mb-px border-b-2 text-sm font-medium hover:text-brand transition-colors cursor-pointer">
+          <%= locale.to_s.upcase %>
+        </button>
+      <% end %>
+    </div>
+
+    <%= form.fields_for :post_translations, post.post_translations.sort_by { |t| t.locale.to_s } do |tf| %>
+      <div data-tabs-target="panel" class="<%= tf.object == post.post_translations.sort_by { |t| t.locale.to_s }.first ? '' : 'hidden' %>">
+        <%= tf.hidden_field :id %>
+        <%= tf.hidden_field :locale %>
+
+        <div class="my-5 rounded-lg border border-white/10 bg-white/5 p-4">
+          <label class="flex items-center gap-2 text-white/80">
+            <%= tf.check_box :published, class: "h-4 w-4 rounded border-white/20 bg-white/5 text-brand focus:ring-brand" %>
+            <%= t("admin.posts.published", language: tf.object.locale.upcase) %>
+          </label>
+          <p class="mt-1 text-xs text-white/40"><%= t("admin.posts.published_hint") %></p>
+
+          <div class="mt-4">
+            <%= tf.label :published_at, t("admin.posts.published_at"), class: "block text-sm font-medium text-white/80 mb-1" %>
+            <%= tf.datetime_local_field :published_at, class: "block rounded-md border border-white/20 bg-white/5 focus:border-brand focus:ring-1 focus:ring-brand px-3 py-2.5 mt-1 w-full text-white" %>
+            <p class="mt-1 text-xs text-white/40"><%= t("admin.posts.published_at_hint") %></p>
+          </div>
+        </div>
+
+        <div class="my-5">
+          <%= tf.label :title, t("admin.posts.title", language: tf.object.locale.upcase), class: "block text-sm font-medium text-white/80 mb-1" %>
+          <%= tf.text_field :title, placeholder: t("admin.posts.title_placeholder"), class: "block rounded-md border border-white/20 bg-white/5 focus:border-brand focus:ring-1 focus:ring-brand px-3 py-2.5 mt-1 w-full placeholder-white/40 text-white" %>
+        </div>
+
+        <div class="my-5">
+          <%= tf.label :description, t("admin.posts.description", language: tf.object.locale.upcase), class: "block text-sm font-medium text-white/80 mb-1" %>
+          <%= tf.text_field :description, placeholder: t("admin.posts.description_placeholder"), class: "block rounded-md border border-white/20 bg-white/5 focus:border-brand focus:ring-1 focus:ring-brand px-3 py-2.5 mt-1 w-full placeholder-white/40 text-white" %>
+          <p class="text-xs text-white/40 mt-1"><%= t("admin.posts.description_hint") %></p>
+        </div>
+
+        <div class="my-5">
+          <%= tf.label :content, t("admin.posts.content", language: tf.object.locale.upcase), class: "block text-sm font-medium text-white/80 mb-1" %>
+          <div class="dark">
+            <%= tf.marksmith :content, placeholder: t("admin.posts.content_placeholder") %>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+
+  <div class="flex items-center gap-4 mt-8">
+    <%= form.submit class: "rounded-md px-5 py-2.5 bg-brand hover:bg-brand/90 text-white inline-block font-medium cursor-pointer" %>
+    <%= link_to t("admin.posts.cancel"), admin_posts_path, class: "text-sm font-medium text-white/60 hover:text-white transition-colors" %>
+  </div>
+<% end %>

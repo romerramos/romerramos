@@ -1,5 +1,7 @@
 <header
-  class="flex justify-between py-4 px-6 md:px-10 h-16 md:h-24 items-center shrink-0"
+  class="
+    flex justify-between py-4 px-6 md:px-10 h-16 md:h-24 items-center shrink-0
+  "
 >
   <div
     class="
@@ -30,13 +32,13 @@
       </li>
       <li>
         <%= link_to t("nav.jot_spot"),
-        "#",
+        posts_path,
         class:
-          "hover:text-brand #{current_page?("#") ? "text-brand font-bold underline" : ""}" %>
+          "hover:text-brand #{controller_name == "posts" && !controller_path.start_with?("admin/") ? "text-brand font-bold underline" : ""}" %>
       </li>
     </ol>
   </nav>
-  <%= link_to({ locale: I18n.locale == :es ? "en" : "es" }) do %>
+  <%= link_to locale_switch_path do %>
     <div
       class="
         border border-brand px-2 py-1 border-2 rounded text-xs md:text-xl cursor-pointer
