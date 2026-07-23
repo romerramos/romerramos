@@ -1,0 +1,15 @@
+<div class="w-full max-w-xl">
+  <%= turbo_stream_from @post_generation %>
+
+  <h1 class="font-bold text-3xl md:text-4xl mb-3"><%= t("admin.post_generations.processing_title") %></h1>
+  <p class="text-white/60 mb-8"><%= t("admin.post_generations.processing_hint") %></p>
+
+  <%= render "status", post_generation: @post_generation %>
+
+  <div class="mt-10">
+    <%= link_to admin_posts_path, class: "inline-flex items-center gap-2 text-sm font-medium text-white/60 hover:text-brand transition-colors" do %>
+      <%= lucide_icon "arrow-left", class: "size-4", "aria-hidden": "true" %>
+      <%= t("admin.post_generations.back") %>
+    <% end %>
+  </div>
+</div>

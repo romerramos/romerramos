@@ -120,6 +120,41 @@ en:
       content: "Content (%{language})"
       content_placeholder: "Write your Markdown content here..."
       cancel: "Cancel"
+    post_generations:
+      new: "Create from voice"
+      back: "Back to Jot Spot"
+      instructions: "Record up to ten minutes. The transcript will become a polished English and Spanish draft for your review."
+      source_language: "Recording language"
+      source_language_hint: "Choose the language you will speak for a more accurate transcript."
+      english: "English"
+      spanish: "Spanish"
+      start_recording: "Start recording"
+      stop_recording: "Stop recording"
+      create_drafts: "Create drafts"
+      cancel: "Cancel"
+      unsupported: "This browser does not support microphone recording. Try a recent version of Safari or Chrome."
+      permission_denied: "Microphone access was not granted. Check your browser permissions and try again."
+      recording_too_large: "This recording is too large. Please record a shorter note."
+      recording_empty: "No audio was captured. Please try recording again."
+      processing_title: "Creating your drafts"
+      processing_hint: "You can leave this page. The drafts will open in the editor when they are ready."
+      status:
+        queued: "Waiting to start..."
+        transcribing: "Transcribing your recording..."
+        generating: "Writing the English and Spanish drafts..."
+        completed: "Your drafts are ready. Opening the editor..."
+      review: "Review drafts"
+      retry: "Try again"
+      not_retryable: "This generation cannot be retried."
+      failures:
+        configuration: "The AI service is not configured correctly. Check the application settings."
+        invalid_audio: "The recording could not be processed. Please try recording it again."
+        provider_unavailable: "The AI service is temporarily unavailable. Please try again."
+        content_too_long: "The recording produced too much content. Please record a shorter note."
+        unexpected: "Something went wrong while creating the drafts. Please try again."
+      errors:
+        one: "1 error prohibited this recording from being submitted:"
+        other: "%{count} errors prohibited this recording from being submitted:"
 
   activerecord:
     errors:
@@ -130,6 +165,12 @@ en:
               blank: "is required"
               invalid_type: "must be a JPG, PNG, WEBP or GIF"
               too_large: "is too large (max 100MB)"
+        post_generation:
+          attributes:
+            audio:
+              blank: "is required"
+              invalid_type: "must be an audio recording (WEBM, MP4, OGG, WAV or MP3)"
+              too_large: "is too large (max 24MB)"
 
   layouts:
     application:

@@ -345,6 +345,41 @@ es:
       content: "Contenido (%{language})"
       content_placeholder: "Escribe aquí el contenido en Markdown..."
       cancel: "Cancelar"
+    post_generations:
+      new: "Crear con voz"
+      back: "Volver a Jot Spot"
+      instructions: "Graba hasta diez minutos. La transcripción se convertirá en un borrador pulido en inglés y español para que lo revises."
+      source_language: "Idioma de la grabación"
+      source_language_hint: "Elige el idioma en el que vas a hablar para mejorar la precisión de la transcripción."
+      english: "Inglés"
+      spanish: "Español"
+      start_recording: "Empezar a grabar"
+      stop_recording: "Detener grabación"
+      create_drafts: "Crear borradores"
+      cancel: "Cancelar"
+      unsupported: "Este navegador no permite grabar con el micrófono. Prueba una versión reciente de Safari o Chrome."
+      permission_denied: "No se concedió acceso al micrófono. Revisa los permisos del navegador e inténtalo de nuevo."
+      recording_too_large: "La grabación es demasiado grande. Graba una nota más corta."
+      recording_empty: "No se capturó audio. Intenta grabar de nuevo."
+      processing_title: "Creando tus borradores"
+      processing_hint: "Puedes salir de esta página. Los borradores se abrirán en el editor cuando estén listos."
+      status:
+        queued: "Esperando para empezar..."
+        transcribing: "Transcribiendo tu grabación..."
+        generating: "Escribiendo los borradores en inglés y español..."
+        completed: "Tus borradores están listos. Abriendo el editor..."
+      review: "Revisar borradores"
+      retry: "Intentar de nuevo"
+      not_retryable: "Esta generación no se puede repetir."
+      failures:
+        configuration: "El servicio de IA no está configurado correctamente. Revisa la configuración de la aplicación."
+        invalid_audio: "No se pudo procesar la grabación. Intenta grabarla de nuevo."
+        provider_unavailable: "El servicio de IA no está disponible temporalmente. Inténtalo de nuevo."
+        content_too_long: "La grabación produjo demasiado contenido. Graba una nota más corta."
+        unexpected: "Algo salió mal al crear los borradores. Inténtalo de nuevo."
+      errors:
+        one: "1 error impidió enviar esta grabación:"
+        other: "%{count} errores impidieron enviar esta grabación:"
 
   activerecord:
     errors:
@@ -355,6 +390,12 @@ es:
               blank: "es obligatoria"
               invalid_type: "debe ser JPG, PNG, WEBP o GIF"
               too_large: "es demasiado grande (máx. 100MB)"
+        post_generation:
+          attributes:
+            audio:
+              blank: "es obligatoria"
+              invalid_type: "debe ser una grabación de audio (WEBM, MP4, OGG, WAV o MP3)"
+              too_large: "es demasiado grande (máx. 24MB)"
 
   layouts:
     application:
