@@ -20,40 +20,39 @@
   </head>
 
   <body class="bg-navy min-h-svh text-white font-dm-sans">
-    <header
-      class="
-        flex justify-between items-center h-16 md:h-20 px-6 md:px-10 border-b
-        border-white/10
-      "
-    >
-      <div class="flex items-center gap-6">
-        <%= link_to root_path(locale: I18n.locale), class: "font-jetbrains-mono font-extrabold text-lg md:text-xl" do %>
+    <header class="flex items-center border-b border-white/10 px-4 py-4 sm:px-6 lg:h-20 lg:px-10 lg:py-0">
+      <div class="flex w-full flex-wrap items-center justify-between gap-x-6 gap-y-4">
+        <%= link_to root_path(locale: I18n.locale), class: "shrink-0 font-jetbrains-mono font-extrabold text-lg md:text-xl" do %>
           <%= image_tag "logo.svg", class: "h-3 md:h-4" %>
         <% end %>
         <% if authenticated? %>
-          <%= link_to "Jot Spot",
-          admin_posts_path,
-          class: "text-sm font-medium text-white/70 hover:text-brand transition-colors" %>
-          <%= link_to t("admin.post_generations.new"),
-          new_admin_post_generation_path,
-          class: "text-sm font-medium text-white/70 hover:text-brand transition-colors" %>
-          <%= link_to t("admin.photos.title"),
-          admin_photos_path,
-          class: "text-sm font-medium text-white/70 hover:text-brand transition-colors" %>
+          <nav
+            aria-label="Admin"
+            class="flex min-w-0 flex-1 flex-wrap justify-end gap-x-3 gap-y-2 text-xs sm:gap-x-4 sm:text-sm lg:flex-none lg:gap-6"
+          >
+            <%= link_to "Jot Spot",
+            admin_posts_path,
+            class: "whitespace-nowrap font-medium text-white/70 hover:text-brand transition-colors" %>
+            <%= link_to t("admin.post_generations.new"),
+            new_admin_post_generation_path,
+            class: "whitespace-nowrap font-medium text-white/70 hover:text-brand transition-colors" %>
+            <%= link_to t("admin.photos.title"),
+            admin_photos_path,
+            class: "whitespace-nowrap font-medium text-white/70 hover:text-brand transition-colors" %>
+          </nav>
+          <div class="order-3 flex w-full min-w-0 items-center justify-between gap-3 border-t border-white/10 pt-3 lg:order-none lg:w-auto lg:gap-4 lg:border-t-0 lg:pt-0">
+            <span class="min-w-0 truncate text-xs text-white/60 sm:text-sm"><%= Current.session.user.email_address %></span>
+            <%= button_to "Log out",
+            session_path,
+            method: :delete,
+            form: { class: "shrink-0" },
+            class: "shrink-0 cursor-pointer text-xs font-semibold text-brand hover:text-brand/80 sm:text-sm" %>
+          </div>
         <% end %>
       </div>
-      <% if authenticated? %>
-        <div class="flex items-center gap-4">
-          <span class="text-sm text-white/60"><%= Current.session.user.email_address %></span>
-          <%= button_to "Log out",
-          session_path,
-          method: :delete,
-          class: "text-sm font-semibold text-brand hover:text-brand/80 cursor-pointer" %>
-        </div>
-      <% end %>
     </header>
 
-    <main class="flex flex-col items-center px-6 py-12">
+    <main class="flex flex-col items-center px-4 py-8 sm:px-6 sm:py-10 md:py-12">
       <% if notice.present? %>
         <p class="py-2 px-3 bg-brand/20 mb-5 text-brand font-medium rounded-lg w-full max-w-5xl" role="status"><%= notice %></p>
       <% end %>

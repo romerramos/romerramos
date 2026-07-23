@@ -1,6 +1,6 @@
 <section
   id="<%= dom_id(post_generation, :status) %>"
-  class="rounded-lg border border-white/10 bg-white/5 p-6"
+  class="rounded-lg border border-white/10 bg-white/5 p-4 sm:p-6"
   aria-live="polite"
 >
   <% case post_generation.status %>
@@ -27,7 +27,7 @@
       admin_post_generation_path(post_generation),
       method: :patch,
       class:
-        "mt-5 rounded-md px-4 py-2.5 bg-brand hover:bg-brand/90 text-white font-medium cursor-pointer" %>
+        "mt-5 inline-flex items-center justify-center rounded-md bg-brand px-4 py-2 text-sm font-medium leading-5 text-white hover:bg-brand/90 cursor-pointer" %>
     <% end %>
   <% when "completed" %>
     <div
@@ -38,7 +38,7 @@
       <%= link_to t("admin.post_generations.review"),
       edit_admin_post_path(post_generation.post),
       class:
-        "inline-block mt-5 rounded-md px-4 py-2.5 bg-brand hover:bg-brand/90 text-white font-medium" %>
+        "mt-5 inline-flex items-center justify-center rounded-md bg-brand px-4 py-2 text-sm font-medium leading-5 text-white hover:bg-brand/90" %>
     </div>
   <% end %>
 </section>

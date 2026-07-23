@@ -1,7 +1,7 @@
 <% content_for :title, "#{t("admin.photos.title")} — Admin" %>
 
 <div class="w-full max-w-5xl">
-  <div class="flex items-center justify-between mb-2">
+  <div class="mb-4 flex flex-col items-start gap-3 sm:flex-row sm:items-center sm:justify-between">
     <div>
       <h1 class="text-3xl md:text-4xl font-bold">
         <%= t("admin.photos.title") %>
@@ -9,7 +9,7 @@
       <p class="text-white/60 font-light"><%= t("admin.photos.subtitle") %></p>
     </div>
     <%= link_to t("admin.photos.new"), new_admin_photo_path,
-      class: "rounded-md px-5 py-2.5 bg-brand hover:bg-brand/90 text-white font-medium" %>
+      class: "inline-flex w-full items-center justify-center rounded-md bg-brand px-4 py-2 text-sm font-medium leading-5 text-white hover:bg-brand/90 sm:w-auto" %>
   </div>
 
   <% if @photos.any? %>
