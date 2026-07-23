@@ -19,6 +19,7 @@ Rails.application.routes.draw do
   namespace :admin do
     get "/", to: redirect("/admin/posts")
     resources :posts
+    resources :post_generations, only: [ :new, :create, :show, :update ]
     resources :photos, except: [ :show ]
   end
 

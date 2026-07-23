@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2026_07_21_110000) do
+ActiveRecord::Schema[8.1].define(version: 2026_07_23_090000) do
   create_table "active_storage_attachments", force: :cascade do |t|
     t.bigint "blob_id", null: false
     t.datetime "created_at", null: false
@@ -49,6 +49,22 @@ ActiveRecord::Schema[8.1].define(version: 2026_07_21_110000) do
     t.string "title_es"
     t.datetime "updated_at", null: false
     t.index ["position"], name: "index_photos_on_position", unique: true
+  end
+
+  create_table "post_generations", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.string "failure_reason"
+    t.string "generation_model"
+    t.integer "post_id"
+    t.string "source_locale", null: false
+    t.string "status", default: "queued", null: false
+    t.text "transcript"
+    t.string "transcription_model"
+    t.datetime "updated_at", null: false
+    t.integer "user_id", null: false
+    t.index ["post_id"], name: "index_post_generations_on_post_id"
+    t.index ["status"], name: "index_post_generations_on_status"
+    t.index ["user_id"], name: "index_post_generations_on_user_id"
   end
 
   create_table "post_translations", force: :cascade do |t|
@@ -91,6 +107,8 @@ ActiveRecord::Schema[8.1].define(version: 2026_07_21_110000) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "post_generations", "posts", on_delete: :nullify
+  add_foreign_key "post_generations", "users"
   add_foreign_key "post_translations", "posts"
   add_foreign_key "sessions", "users"
 end

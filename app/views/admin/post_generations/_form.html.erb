@@ -1,0 +1,101 @@
+<%= form_with model: [ :admin, post_generation ], multipart: true,
+  data: {
+    controller: "admin--post-recording",
+    admin__post_recording_max_duration_value: 600,
+    admin__post_recording_max_size_value: PostGeneration::MAX_AUDIO_SIZE
+  } do |form| %>
+
+  <div class="my-5">
+    <%= form.label :source_locale,
+               t("admin.post_generations.source_language"),
+               class: "block text-sm font-medium text-white/80 mb-1" %>
+    <%= form.select :source_locale,
+                [
+                  [t("admin.post_generations.english"), "en"],
+                  [t("admin.post_generations.spanish"), "es"],
+                ],
+                {},
+                class:
+                  "block rounded-md border border-white/20 bg-white/5 focus:border-brand focus:ring-1 focus:ring-brand px-3 py-2.5 mt-1 w-full text-white" %>
+    <p class="mt-1 text-xs text-white/40"><%= t("admin.post_generations.source_language_hint") %></p>
+  </div>
+
+  <div class="rounded-lg border border-white/10 bg-white/5 p-5">
+    <%= form.file_field :audio,
+                    accept: PostGeneration::AUDIO_CONTENT_TYPES.join(","),
+                    class: "hidden",
+                    data: {
+                      admin__post_recording_target: "input",
+                    } %>
+
+    <div class="flex flex-wrap items-center gap-3">
+      <button
+        type="button"
+        data-admin--post-recording-target="record"
+        data-action="admin--post-recording#start"
+        class="
+          rounded-md px-4 py-2.5 bg-brand hover:bg-brand/90 text-white font-medium
+          cursor-pointer
+        "
+      >
+        <%= t("admin.post_generations.start_recording") %>
+      </button>
+
+      <button
+        type="button"
+        hidden
+        data-admin--post-recording-target="stop"
+        data-action="admin--post-recording#stop"
+        class="
+          rounded-md px-4 py-2.5 bg-red-500/80 hover:bg-red-500 text-white font-medium
+          cursor-pointer
+        "
+      >
+        <%= t("admin.post_generations.stop_recording") %>
+      </button>
+
+      <time
+        data-admin--post-recording-target="timer"
+        class="font-jetbrains-mono text-white/70"
+        aria-live="off"
+      >00:00</time>
+    </div>
+
+    <audio
+      hidden
+      controls
+      class="w-full mt-5"
+      data-admin--post-recording-target="preview"
+    ></audio>
+
+    <div class="mt-4 space-y-2 text-sm" aria-live="polite">
+      <p
+        hidden
+        data-admin--post-recording-target="unsupportedError"
+        class="text-red-400"
+      ><%= t("admin.post_generations.unsupported") %></p>
+      <p
+        hidden
+        data-admin--post-recording-target="permissionError"
+        class="text-red-400"
+      ><%= t("admin.post_generations.permission_denied") %></p>
+      <p
+        hidden data-admin--post-recording-target="sizeError" class="text-red-400"><%= t("admin.post_generations.recording_too_large") %></p>
+      <p
+        hidden data-admin--post-recording-target="emptyError" class="text-red-400"><%= t("admin.post_generations.recording_empty") %></p>
+    </div>
+  </div>
+
+  <div class="flex items-center gap-4 mt-8">
+    <%= form.submit t("admin.post_generations.create_drafts"),
+                disabled: true,
+                data: {
+                  admin__post_recording_target: "submit",
+                },
+                class:
+                  "rounded-md px-5 py-2.5 bg-brand hover:bg-brand/90 text-white inline-block font-medium cursor-pointer disabled:opacity-40 disabled:cursor-not-allowed" %>
+    <%= link_to t("admin.post_generations.cancel"),
+    admin_posts_path,
+    class: "text-sm font-medium text-white/60 hover:text-white transition-colors" %>
+  </div>
+<% end %>

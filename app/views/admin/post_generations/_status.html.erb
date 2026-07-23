@@ -1,0 +1,44 @@
+<section
+  id="<%= dom_id(post_generation, :status) %>"
+  class="rounded-lg border border-white/10 bg-white/5 p-6"
+  aria-live="polite"
+>
+  <% case post_generation.status %>
+  <% when "queued" %>
+    <div class="flex items-center gap-3">
+      <span class="size-2 rounded-full bg-brand animate-pulse" aria-hidden="true"></span>
+      <p class="text-white/80"><%= t("admin.post_generations.status.queued") %></p>
+    </div>
+  <% when "transcribing" %>
+    <div class="flex items-center gap-3">
+      <span class="size-2 rounded-full bg-brand animate-pulse" aria-hidden="true"></span>
+      <p class="text-white/80"><%= t("admin.post_generations.status.transcribing") %></p>
+    </div>
+  <% when "generating" %>
+    <div class="flex items-center gap-3">
+      <span class="size-2 rounded-full bg-brand animate-pulse" aria-hidden="true"></span>
+      <p class="text-white/80"><%= t("admin.post_generations.status.generating") %></p>
+    </div>
+  <% when "failed" %>
+    <p class="text-red-400" role="alert"><%= t("admin.post_generations.failures.#{post_generation.failure_reason}") %></p>
+
+    <% if post_generation.retryable? %>
+      <%= button_to t("admin.post_generations.retry"),
+      admin_post_generation_path(post_generation),
+      method: :patch,
+      class:
+        "mt-5 rounded-md px-4 py-2.5 bg-brand hover:bg-brand/90 text-white font-medium cursor-pointer" %>
+    <% end %>
+  <% when "completed" %>
+    <div
+      data-controller="admin--post-generation-redirect"
+      data-admin--post-generation-redirect-url-value="<%= edit_admin_post_path(post_generation.post) %>"
+    >
+      <p class="text-brand"><%= t("admin.post_generations.status.completed") %></p>
+      <%= link_to t("admin.post_generations.review"),
+      edit_admin_post_path(post_generation.post),
+      class:
+        "inline-block mt-5 rounded-md px-4 py-2.5 bg-brand hover:bg-brand/90 text-white font-medium" %>
+    </div>
+  <% end %>
+</section>

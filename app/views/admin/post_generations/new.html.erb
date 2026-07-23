@@ -1,0 +1,25 @@
+<div class="w-full max-w-xl">
+  <%= link_to admin_posts_path, class: "inline-flex items-center gap-2 text-sm text-white/60 hover:text-brand" do %>
+    <%= lucide_icon "arrow-left", class: "size-4", "aria-hidden": "true" %>
+    <%= t("admin.post_generations.back") %>
+  <% end %>
+
+  <h1 class="text-3xl md:text-4xl font-bold mt-2 mb-3"><%= t("admin.post_generations.new") %></h1>
+  <p class="text-white/60 mb-8"><%= t("admin.post_generations.instructions") %></p>
+
+  <% if @post_generation.errors.any? %>
+    <div
+      class="rounded-lg border border-red-500/30 bg-red-500/10 p-4 mb-6"
+      role="alert"
+    >
+      <p class="text-red-400 font-medium mb-2"><%= t("admin.post_generations.errors", count: @post_generation.errors.count) %></p>
+      <ul class="list-disc list-inside text-red-400/80 text-sm space-y-1">
+        <% @post_generation.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <%= render "form", post_generation: @post_generation %>
+</div>

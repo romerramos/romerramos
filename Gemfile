@@ -26,6 +26,8 @@ gem "bcrypt", "~> 3.1.7"
 gem "marksmith"
 # Markdown parser for marksmith
 gem "commonmarker"
+gem "ruby_llm", "~> 1.16"
+gem "ruby_llm-schema"
 gem "pagy", "~> 43.6"
 gem "lucide-rails", "~> 0.7.4"
 

@@ -1,10 +1,16 @@
 <div class="w-full max-w-4xl">
   <div class="flex items-center justify-between mb-8">
     <h1 class="font-bold text-3xl md:text-4xl">Jot Spot</h1>
-    <%= link_to "New Post",
-    new_admin_post_path,
-    class:
-      "rounded-md px-5 py-2.5 bg-brand hover:bg-brand/90 text-white inline-block font-medium cursor-pointer text-sm" %>
+    <div class="flex items-center gap-3">
+      <%= link_to t("admin.post_generations.new"),
+      new_admin_post_generation_path,
+      class:
+        "rounded-md px-5 py-2.5 bg-white/10 hover:bg-white/20 text-white inline-block font-medium cursor-pointer text-sm" %>
+      <%= link_to t("admin.posts.new"),
+      new_admin_post_path,
+      class:
+        "rounded-md px-5 py-2.5 bg-brand hover:bg-brand/90 text-white inline-block font-medium cursor-pointer text-sm" %>
+    </div>
   </div>
 
   <% if @posts.any? %>
