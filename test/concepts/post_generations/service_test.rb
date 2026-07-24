@@ -3,7 +3,7 @@ require "stringio"
 
 class PostGenerations::ServiceTest < ActiveSupport::TestCase
   class FakeAdapter
-    attr_reader :transcription_language, :transcription_prompt
+    attr_reader :transcription_language, :transcription_prompt, :instructions
 
     def transcribe(_path, language:, prompt:)
       @transcription_language = language
@@ -46,6 +46,10 @@ class PostGenerations::ServiceTest < ActiveSupport::TestCase
     assert generation.completed?
     assert_equal "This is the voice transcript.", generation.transcript
     assert_equal "en", adapter.transcription_language
+    assert_equal PostGenerations::Service::TRANSCRIPTION_PROMPT, adapter.transcription_prompt
+    assert_equal PostGenerations::Service::WRITING_INSTRUCTIONS, adapter.instructions
+    assert_includes adapter.instructions, "natural Venezuelan Spanish"
+    assert_includes adapter.instructions, "Do not add regional slang"
     assert_equal "fake-transcriber", generation.transcription_model
     assert_equal "fake-writer", generation.generation_model
     assert_not generation.audio.attached?

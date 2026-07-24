@@ -13,6 +13,14 @@ class PostGenerations::Service
 
     Create semantically equivalent English and Spanish versions.
 
+    Write the Spanish version in natural Venezuelan Spanish. Keep it relaxed
+    and conversational but still polished enough for a personal blog. Use
+    informal Latin American conventions: tuteo for singular address and
+    ustedes for plural, with their natural verb forms. Avoid Peninsular
+    vocabulary and vosotros forms unless the source specifically requires
+    them. Do not add regional slang, filler, or unnecessary informality just
+    to make the voice sound Venezuelan.
+
     Preserve the author's claims, experiences, opinions, uncertainty, and
     personal tone. Do not invent facts, examples, quotations, or conclusions
     that are not supported by the transcript.
