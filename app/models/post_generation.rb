@@ -1,4 +1,9 @@
 class PostGeneration < ApplicationRecord
+  # Kept under gpt-4o-transcribe's 25 minute ceiling. The recorder pins its
+  # bitrate so this stays well inside MAX_AUDIO_SIZE.
+  MAX_AUDIO_DURATION = 20.minutes
+
+  # OpenAI rejects transcription uploads over 25MB.
   MAX_AUDIO_SIZE = 24.megabytes
 
   AUDIO_CONTENT_TYPES = %w[

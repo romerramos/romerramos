@@ -1,5 +1,10 @@
 import { Controller } from "@hotwired/stimulus"
 
+// Speech-only dictation. Pinning the bitrate keeps a full-length recording far
+// below the server's size cap instead of relying on the browser default, which
+// is tuned for music and varies per browser.
+const AUDIO_BITS_PER_SECOND = 48_000
+
 export default class extends Controller {
   static targets = [
     "input",
@@ -44,7 +49,8 @@ export default class extends Controller {
       this.stream = await navigator.mediaDevices.getUserMedia({ audio: true })
 
       const mimeType = this.preferredMimeType()
-      const options = mimeType ? { mimeType } : {}
+      const options = { audioBitsPerSecond: AUDIO_BITS_PER_SECOND }
+      if (mimeType) options.mimeType = mimeType
 
       this.recorder = new MediaRecorder(this.stream, options)
       this.recorder.addEventListener("dataavailable", this.captureChunk)
