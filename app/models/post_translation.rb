@@ -4,10 +4,6 @@ class PostTranslation < ApplicationRecord
   attribute :published, :boolean, default: false
 
   scope :published, -> { where(published: true) }
-  scope :spanish_drafts, -> { where(locale: "es", published: false) }
-  scope :pending_spanish_draft_regeneration, -> {
-    spanish_drafts.where(spanish_draft_regenerated_at: nil)
-  }
 
   validates :locale, presence: true, inclusion: { in: -> { I18n.available_locales.map(&:to_s) } }
   validates :title, :content, presence: true, if: :published?

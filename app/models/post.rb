@@ -32,6 +32,15 @@ class Post < ApplicationRecord
     post_translations.filter_map { |translation| translation.locale if translation.published? }
   end
 
+  # Nested attributes drop blank translations, so the editor rebuilds them to
+  # keep a panel on screen for every locale.
+  def build_missing_translations
+    existing_locales = post_translations.map(&:locale)
+    I18n.available_locales.each do |locale|
+      post_translations.build(locale: locale.to_s) unless locale.to_s.in?(existing_locales)
+    end
+  end
+
   private
     def blank_translation?(attributes)
       !PostTranslation.type_for_attribute("published").cast(attributes["published"]) &&
