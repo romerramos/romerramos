@@ -11,7 +11,7 @@ module Admin
 
     def new
       @post = Post.new
-      build_missing_translations
+      @post.build_missing_translations
     end
 
     def create
@@ -20,20 +20,20 @@ module Admin
       if @post.save
         redirect_to admin_post_path(@post), notice: t("admin.posts.created")
       else
-        build_missing_translations
+        @post.build_missing_translations
         render :new, status: :unprocessable_entity
       end
     end
 
     def edit
-      build_missing_translations
+      @post.build_missing_translations
     end
 
     def update
       if @post.update(post_params)
         redirect_to admin_post_path(@post), notice: t("admin.posts.updated")
       else
-        build_missing_translations
+        @post.build_missing_translations
         render :edit, status: :unprocessable_entity
       end
     end
@@ -53,13 +53,6 @@ module Admin
         params.require(:post).permit(
           post_translations_attributes: [ :id, :locale, :title, :description, :content, :published, :published_at, :_destroy ]
         )
-      end
-
-      def build_missing_translations
-        existing_locales = @post.post_translations.map(&:locale)
-        I18n.available_locales.each do |locale|
-          @post.post_translations.build(locale: locale.to_s) unless locale.to_s.in?(existing_locales)
-        end
       end
   end
 end

@@ -1,0 +1,16 @@
+<%# Rendered inside the post form and again on its own when a selection is
+    rewritten, so the field name has to match either way. The scope is spelled
+    out because fields_for would add its own nested-attributes index on top. %>
+<div class="relative">
+  <%# A blurred textarea stops painting its selection, so while the instruction
+      field has focus this mirror draws the highlight behind the real text. It
+      is positioned and styled to match the textarea from JavaScript. %>
+  <div hidden aria-hidden="true" data-admin--selection-rewrite-target="mirror"
+    class="pointer-events-none absolute z-0 box-border overflow-hidden text-transparent"><span></span><mark class="rounded-[2px] bg-brand/40 text-transparent"></mark><span></span></div>
+
+  <%= fields "post[post_translations_attributes][#{index}]", model: translation do |tf| %>
+    <%= tf.marksmith :content,
+          placeholder: t("admin.posts.content_placeholder"),
+          data_attributes: { "admin--selection-rewrite-target" => "field" } %>
+  <% end %>
+</div>

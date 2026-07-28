@@ -345,6 +345,16 @@ es:
       content: "Contenido (%{language})"
       content_placeholder: "Escribe aquí el contenido en Markdown..."
       cancel: "Cancelar"
+      selection_rewrite:
+        selected: "Texto seleccionado"
+        regenerate_all: "Regenerar todo %{language}"
+        regenerate: "Regenerar selección"
+        customize: "Agregar una instrucción"
+        instruction_label: "Instrucción"
+        instruction_placeholder: "ej. hazlo más corto y directo"
+        submit: "Regenerar con instrucción"
+        pending: "Regenerando…"
+        stale: "El texto cambió desde que lo seleccionaste. Selecciónalo de nuevo e inténtalo otra vez."
     post_generations:
       new: "Crear con voz"
       back: "Volver a Jot Spot"

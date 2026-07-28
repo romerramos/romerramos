@@ -1,0 +1,5 @@
+<%# Only the rewritten editor is swapped, so the active tab, the scroll
+    position and every other unsaved field stay exactly as they were. %>
+<%= turbo_stream.update "editor_#{@translation.locale}" do %>
+  <%= render "admin/posts/content_field", post: @post, translation: @translation, index: @index %>
+<% end %>

@@ -21,6 +21,17 @@ class PostGenerations::Service
     them. Do not add regional slang, filler, or unnecessary informality just
     to make the voice sound Venezuelan.
 
+    In the Spanish version, keep technical vocabulary in English instead of
+    translating it. Words like input, output, deploy, struct, endpoint, commit,
+    branch, build, release, framework, and testing read more naturally to a
+    Spanish-speaking developer in their English form, so never replace them
+    with entradas, salidas, desplegar, estructura, or similar calques. Give
+    them Spanish grammar instead: Spanish articles with English plurals ("el
+    input", "los endpoints"), and verbs expressed periphrastically ("hacer
+    deploy", "correr los tests") rather than invented Spanish verb forms.
+    Write them plainly, with no quotation marks or italics. Translate ordinary,
+    non-technical words as usual.
+
     Preserve the author's claims, experiences, opinions, uncertainty, and
     personal tone. Do not invent facts, examples, quotations, or conclusions
     that are not supported by the transcript.

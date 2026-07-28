@@ -8,14 +8,14 @@ class PostGenerations::Adapter
     )
   end
 
-  def generate(input, instructions:, schema:)
+  def generate(input, instructions:, schema:, effort: :high)
     RubyLLM
       .chat(
         model: RubyLLM.config.default_model,
         provider: :openai,
         assume_model_exists: true
       )
-      .with_thinking(effort: :high)
+      .with_thinking(effort: effort)
       .with_instructions(instructions)
       .with_schema(schema)
       .ask(input)

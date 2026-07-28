@@ -120,6 +120,16 @@ en:
       content: "Content (%{language})"
       content_placeholder: "Write your Markdown content here..."
       cancel: "Cancel"
+      selection_rewrite:
+        selected: "Selected text"
+        regenerate_all: "Regenerate all %{language}"
+        regenerate: "Regenerate selection"
+        customize: "Add an instruction"
+        instruction_label: "Instruction"
+        instruction_placeholder: "e.g. make this shorter and more direct"
+        submit: "Regenerate with instruction"
+        pending: "Regenerating…"
+        stale: "The text changed since you selected it. Select again and retry."
     post_generations:
       new: "Create from voice"
       back: "Back to Jot Spot"

@@ -183,6 +183,23 @@ class Admin::PostsControllerTest < ActionDispatch::IntegrationTest
     assert_redirected_to admin_posts_url
   end
 
+  test "edit form nests every translation field under one index per locale" do
+    sign_in_as(@user)
+    @post.post_translations.create!(locale: "es", title: "Primero", content: "Contenido")
+
+    get edit_admin_post_url(@post)
+
+    grouped = @response.body
+      .scan(/name="post\[post_translations_attributes\]\[(\d+)\]\[(\w+)\]"/)
+      .group_by(&:first)
+      .transform_values { |pairs| pairs.map(&:last).uniq.sort } # check_box adds a hidden twin
+    expected = %w[content description id locale published published_at title]
+
+    assert_equal({ "0" => expected, "1" => expected }, grouped)
+    # A doubled index would submit a translation with no locale and blow up on re-render.
+    assert_no_match %r{post_translations_attributes\]\[\d+\]\[\d+\]}, @response.body
+  end
+
   private
     def create_post
       Post.create!(
