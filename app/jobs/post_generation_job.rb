@@ -10,10 +10,12 @@ class PostGenerationJob < ApplicationJob
     RubyLLM::OverloadedError
   ].freeze
 
+  # Must outlast a worst-case run: the transcription and generation calls each
+  # get RubyLLM's request_timeout, so the lock has to survive both.
   limits_concurrency(
     to: 1,
     key: ->(post_generation) { post_generation.id },
-    duration: 20.minutes
+    duration: 30.minutes
   )
 
   retry_on(*TRANSIENT_ERRORS, wait: :polynomially_longer, attempts: 3) do |job, error|
