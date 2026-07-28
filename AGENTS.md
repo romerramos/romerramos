@@ -11,3 +11,4 @@
 - Prefer small, well-known, documented dependencies over custom implementations. When a dependency's documented interface generates its own UI, use it declaratively in ERB rather than recreating its markup in JavaScript; review its license, accessibility, styling, and asset-loading requirements first.
 - Do not improvise assets like: audio, videos, icons, graphs, illustrations, or image sources with Unicode, arbitrary markup, or placeholder services. Ask which icon library or image service to use when the project has not established one. This project uses Lucide for application UI icons; retain meaningful text labels and mark decorative icons as hidden from assistive technology.
 - Use migrations only for schema changes. Perform data fixes and backfills with idempotent Rake tasks that can run safely in phases.
+- I prefer to pull `origin/main` to my feature branches before merging and to not rebase any branches.

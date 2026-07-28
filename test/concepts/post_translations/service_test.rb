@@ -46,6 +46,11 @@ class PostTranslations::ServiceTest < ActiveSupport::TestCase
     assert_equal "Keep this. Rewrite me. Keep that too.", adapter.input.fetch("content")
     assert_equal "make it shorter", adapter.input.fetch("instruction")
     assert_equal PostTranslations::Service::REWRITE_INSTRUCTIONS, adapter.instructions
+    assert_includes adapter.instructions, "natural, conversational voice in every locale"
+    assert_includes adapter.instructions, "common, everyday words"
+    assert_includes adapter.instructions, "Do not add emojis"
+    assert_match(/Do not use\s+em dashes or en dashes/, adapter.instructions)
+    assert_includes adapter.instructions, '"maybe" to "perhaps"'
     assert_equal PostTranslations::Schema, adapter.schema
     assert_equal :low, adapter.effort
   end
