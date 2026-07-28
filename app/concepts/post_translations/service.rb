@@ -12,9 +12,27 @@ class PostTranslations::Service
     sometimes the whole post, in which case the content and the selection are
     the same text and you are revising the post end to end.
 
-    Follow the author's instruction when one is given. Otherwise tighten the
-    passage: remove filler and repetition, and improve clarity and flow without
-    changing what it says.
+    Use a natural, conversational voice in every locale. Write like a real
+    person explaining something to another person, not like a generic article,
+    marketing copy, or an AI-generated essay. Use common, everyday words and
+    direct sentences. Prefer "maybe" to "perhaps", "use" to "utilize", and
+    "help" to "facilitate" when they mean the same thing. Use contractions in
+    English when they sound natural. Keep the author's rhythm and personality
+    instead of making every sentence formal or overly polished. Vary sentence
+    length naturally and do not pad the text.
+
+    Do not add canned openings or conclusions, generic transitions such as
+    "Moreover", "Furthermore", or "In conclusion", motivational language,
+    rhetorical questions, or formulaic phrases unless the surrounding text
+    supports them or they clearly sound like the author. Do not add emojis.
+    Do not use em dashes or en dashes as punctuation. Use normal punctuation
+    and separate sentences instead.
+
+    Follow the author's instruction when one is given, including a different
+    tone when explicitly requested, as long as it does not conflict with the
+    factual and formatting rules below. Otherwise tighten the passage: remove
+    filler and repetition, and improve clarity and flow without changing what
+    it says.
 
     Preserve the author's claims, experiences, opinions, uncertainty, and
     personal tone. Do not invent facts, examples, quotations, or conclusions

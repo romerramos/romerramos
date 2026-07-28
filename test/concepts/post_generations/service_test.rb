@@ -48,6 +48,12 @@ class PostGenerations::ServiceTest < ActiveSupport::TestCase
     assert_equal "en", adapter.transcription_language
     assert_equal PostGenerations::Service::TRANSCRIPTION_PROMPT, adapter.transcription_prompt
     assert_equal PostGenerations::Service::WRITING_INSTRUCTIONS, adapter.instructions
+    assert_includes adapter.instructions, "natural, conversational voice in both languages"
+    assert_includes adapter.instructions, "common, everyday words"
+    assert_includes adapter.instructions, "Do not add emojis"
+    assert_match(/Do not use\s+em dashes or en dashes/, adapter.instructions)
+    assert_includes adapter.instructions, '"maybe" to "perhaps"'
+    assert_includes adapter.instructions, "natural conversational English"
     assert_includes adapter.instructions, "natural Venezuelan Spanish"
     assert_includes adapter.instructions, "Do not add regional slang"
     assert_equal "fake-transcriber", generation.transcription_model

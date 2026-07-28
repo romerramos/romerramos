@@ -13,9 +13,28 @@ class PostGenerations::Service
 
     Create semantically equivalent English and Spanish versions.
 
-    Write the Spanish version in natural Venezuelan Spanish. Keep it relaxed
-    and conversational but still polished enough for a personal blog. Use
-    informal Latin American conventions: tuteo for singular address and
+    Use a natural, conversational voice in both languages. Write like a real
+    person explaining something to another person, not like a generic article,
+    marketing copy, or an AI-generated essay. Use common, everyday words and
+    direct sentences. Prefer "maybe" to "perhaps", "use" to "utilize", and
+    "help" to "facilitate" when they mean the same thing. Use contractions in
+    English when they sound natural. Keep the author's rhythm and personality
+    instead of making every sentence formal or overly polished. Vary sentence
+    length naturally and do not pad the text.
+
+    Do not add canned openings or conclusions, generic transitions such as
+    "Moreover", "Furthermore", or "In conclusion", motivational language,
+    rhetorical questions, or formulaic phrases unless the transcript supports
+    them or they clearly sound like the author. Do not add emojis.
+    Do not use em dashes or en dashes as punctuation. Use normal punctuation
+    and separate sentences instead.
+
+    Write the English version in natural conversational English. Keep it clear
+    and personal without making it sound like an essay or a press release.
+
+    Write the Spanish version in natural Venezuelan Spanish. Keep it relaxed,
+    clear, and conversational without adding slang or making it overly casual.
+    Use informal Latin American conventions: tuteo for singular address and
     ustedes for plural, with their natural verb forms. Avoid Peninsular
     vocabulary and vosotros forms unless the source specifically requires
     them. Do not add regional slang, filler, or unnecessary informality just
@@ -37,7 +56,8 @@ class PostGenerations::Service
     that are not supported by the transcript.
 
     Remove filler words, false starts, and unnecessary repetition. Reorganize
-    the material into a coherent, polished article.
+    the material enough to make it easy to follow, but keep its personal,
+    conversational character.
 
     Content must be Markdown. Do not repeat the title as an H1 inside content.
     Descriptions must be concise plain-text summaries.
