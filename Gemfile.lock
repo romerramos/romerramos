@@ -194,7 +194,7 @@ GEM
       net-pop
       net-smtp
     marcel (1.1.0)
-    marksmith (0.4.8)
+    marksmith (0.5.2)
       activesupport
     matrix (0.4.3)
     mini_mime (1.1.5)
@@ -558,7 +558,7 @@ CHECKSUMS
   lucide-rails (0.7.4) sha256=74d99cc79a9c5f2e8b0fa772756bc9190acad16dc58b21f25d4c3009c57e4393
   mail (2.9.0) sha256=6fa6673ecd71c60c2d996260f9ee3dd387d4673b8169b502134659ece6d34941
   marcel (1.1.0) sha256=fdcfcfa33cc52e93c4308d40e4090a5d4ea279e160a7f6af988260fa970e0bee
-  marksmith (0.4.8) sha256=b91b861d80373fe7db53b4ed208fc7174320775b398f78c6d7f6f35d0cf10dc1
+  marksmith (0.5.2) sha256=6f0deaba934835e090086dfe1ce4a96b1cb446319e8fabedbd0045ae77a18716
   matrix (0.4.3) sha256=a0d5ab7ddcc1973ff690ab361b67f359acbb16958d1dc072b8b956a286564c5b
   mini_mime (1.1.5) sha256=8681b7e2e4215f2a159f9400b5816d85e9d8c6c6b491e96a12797e798f8bccef
   minitest (6.0.6) sha256=153ea36d1d987a62942382b61075745042a2b3123b1cd48f4c3675af9cc7d6f1
