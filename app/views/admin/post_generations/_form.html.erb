@@ -1,7 +1,7 @@
 <%= form_with model: [ :admin, post_generation ], multipart: true,
   data: {
     controller: "admin--post-recording",
-    admin__post_recording_max_duration_value: 600,
+    admin__post_recording_max_duration_value: PostGeneration::MAX_AUDIO_DURATION.to_i,
     admin__post_recording_max_size_value: PostGeneration::MAX_AUDIO_SIZE
   } do |form| %>
 

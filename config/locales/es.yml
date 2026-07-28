@@ -348,7 +348,7 @@ es:
     post_generations:
       new: "Crear con voz"
       back: "Volver a Jot Spot"
-      instructions: "Graba hasta diez minutos. La transcripción se convertirá en un borrador pulido en inglés y español para que lo revises."
+      instructions: "Graba hasta veinte minutos. La transcripción se convertirá en un borrador pulido en inglés y español para que lo revises."
       source_language: "Idioma de la grabación"
       source_language_hint: "Elige el idioma en el que vas a hablar para mejorar la precisión de la transcripción."
       english: "Inglés"
